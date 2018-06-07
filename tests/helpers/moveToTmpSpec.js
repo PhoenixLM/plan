@@ -1,5 +1,5 @@
 /*
-    Arquivo: helpers/moveImgToTmpSpec.js
+    Arquivo: helpers/moveToTmpSpec.js
     Tipo: JavaScript
     Descrição:
         O arquivo deve implemetar um helper que recebe um 

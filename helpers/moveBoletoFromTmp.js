@@ -5,12 +5,9 @@ const rimraf = require('rimraf')
 move = (req, boletoId, callback) => {
     var pathIn = './tmp/' + req.sessao.userId + '/'
     var pathOut = './public/boletos/' + boletoId + '/'
-    console.log('pathOut: ' + pathOut)
     fs.mkdir(pathOut, (err) => {
         if (err) callback(err)
         fs.readdir(pathIn, (err, files) => {
-            console.log('pathIn: ' + pathIn)
-            console.log('Files: ' + files)
             if(err) callback(err)
             for(let i = 0; i < files.length; i++) {
                 fs.copyFile(pathIn + files[i], pathOut + "boleto.pdf", () => {

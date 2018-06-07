@@ -12,9 +12,16 @@
                 redireciona para a página de login
             
             (post) /login
-                recebe username e password dentro de req.body e autentica
-                o usuário. Se autenticado, guardar o id do usuário no cookie
-                'sessions' sob o parâmetro 'userId' e redirecionar para a pagina
-                admin/panel, se não autenticado renderizar a página 'login' com 
-                o atributo 'error' de valor 'true'
+                recebe username e password dentro de req.body e tenta 
+                autenticar o usuário como administrador, em caso de
+                sucesso, guarda o id do usuário no cookie 'sessao' sobe
+                o parametro 'userId' e redireciona para a página
+                admin/painel.
+                Caso falhe, é feito uma tentativa de autenticação como
+                cliente. Caso sucesso, guarda o id do usuário no cookie
+                'sessao' sobe o parametro 'userId' e redireciona para a página
+                cliente/painel.
+                Caso falhe novamente, renderiza a página 'login' com o atributo
+                'error' de valor 'true'
+                
 */

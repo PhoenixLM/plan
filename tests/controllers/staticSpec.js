@@ -7,4 +7,5 @@
             '/': renderiza o arquivo views/index.ejs
             '/vendas': renderiza o arquivo views/vendas.ejs
             '/alugueis': renderiza o arquivo views/alugueis.ejs
+            '/textpesquisa': renderiza o arquivo views/textpesquisa.ejs
 */
