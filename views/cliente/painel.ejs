@@ -13,67 +13,53 @@
 <body class="animsition">
     <!-- PAGE WRAPPER -->
     <div class="page-wrapper">
+
         <!-- HEADER DESKTOP-->
         <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="#">
+                        <a href="/cliente/painel">
                             <img src="/resources/plano-logo.png" alt="Plano Imóveis" />
                         </a>
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="./painel">
+                                <a href="/cliente/painel">
                                     <i class="fas fa-tachometer-alt"></i>
-                                    <span class="bot-line"></span>Home</a>
+                                    <span class="bot-line"></span>Dashboard</a>
                             </li>
                             <li>
-                                <a href="./boletos">
-                                    <i class="fas fa-users"></i>
+                                <a href="/cliente/boletos">
+                                    <i class="fas fa-file"></i>
                                     <span class="bot-line"></span>Boletos</a>
                             </li>
                         </ul>
                     </div>
+                    <style>
+                    .plano-cliente-logout {
+                        display: block;
+                        color: #333;
+                        padding: 15px 25px;
+                        font-size: 14px;
+                    }
+                    .plano-cliente-logout a, .plano-cliente-logout i {
+                        color: #fff;
+                    }
+                    .plano-cliente-logout a i{
+                        line-height: 1;
+                        margin-right: 20px;
+                        font-size: 18px;
+                        vertical-align: middle;
+                    }
+                    </style>
                     <div class="header__tool">
                         <div class="account-wrap">
-                            <div class="account-item account-item--style2 clearfix js-item-menu">
-                                <div class="image">
-                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                </div>
-                                <div class="content">
-                                    <a class="js-acc-btn" href="#">john doe</a>
-                                </div>
-                                <div class="account-dropdown js-dropdown">
-                                    <div class="info clearfix">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="name">
-                                                <a href="#">john doe</a>
-                                            </h5>
-                                            <span class="email">johndoe@example.com</span>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__footer">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-power"></i>Logout</a>
-                                    </div>
-                                </div>
+                            <div class="plano-cliente-logout">
+                                <a href="/login/logout">
+                                    <i class="zmdi zmdi-power"></i>Logout
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +73,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="/cliente/painel">
                             <img src="/resources/plano-logo.png" alt="Plano Imóveis" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -102,147 +88,51 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="./painel">
+                            <a href="/cliente/painel">
                                 <i class="fas fa-tachometer-alt"></i>
-                                <span class="bot-line"></span>Home</a>
+                                <span class="bot-line"></span>Dashboard</a>
                         </li>
                         <li>
-                            <a href="./boletos">
-                                <i class="fas fa-users"></i>
+                            <a href="/cliente/boletos">
+                                <i class="fas fa-file"></i>
                                 <span class="bot-line"></span>Boletos</a>
+                        </li>
+                        <li>
+                            <a href="/login/logout">
+                                <i class="fas fa-power-off"></i>
+                                <span class="bot-line"></span>Logout</a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </header>
-        <div class="sub-header-mobile-2 d-block d-lg-none">
-            <div class="header__tool">
-                <div class="account-wrap">
-                    <div class="account-item account-item--style2 clearfix js-item-menu">
-                        <div class="image">
-                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                        </div>
-                        <div class="content">
-                            <a class="js-acc-btn" href="#">john doe</a>
-                        </div>
-                        <div class="account-dropdown js-dropdown">
-                            <div class="info clearfix">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="name">
-                                        <a href="#">john doe</a>
-                                    </h5>
-                                    <span class="email">johndoe@example.com</span>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__body">
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__footer">
-                                <a href="#">
-                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- END HEADER MOBILE -->
 
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
 
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="#">Admin</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Dashboard</li>
-                                    </ul>
-                                </div>
+            <!-- MAIN CONTENT-->
+            <section class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="table-responsive m-b-40">
+                                Bem vindo ao painel do cliente.
                             </div>
+                            <!-- END DATA TABLE-->
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- END BREADCRUMB-->
-
-            <!-- STATISTIC-->
-            <section class="statistic statistic2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item statistic__item--green">
-                                <h2 class="number">368</h2>
-                                <span class="desc">vistantes no mês</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-account-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">88</h2>
-                                <span class="desc">vendas e alugueis</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-shopping-cart"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">R$ 1,060,386</h2>
-                                <span class="desc">total vendas</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-money"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item statistic__item--red">
-                                <h2 class="number">R$ 750,845</h2>
-                                <span class="desc">total alugueis</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-money"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END STATISTIC-->
-
+            <!-- END MAIN CONTENT-->
+    
             <!-- COPYRIGHT-->
             <section class="p-t-60 p-b-20">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2018 Pleno Imóveis.</p>
+                                <p>Copyright © 2018 Plano Imóveis.</p>
                             </div>
                         </div>
                     </div>
@@ -259,6 +149,4 @@
     <% include ../includes/scriptPainel.ejs %>
 
 </body>
-
 </html>
-<!-- end document-->

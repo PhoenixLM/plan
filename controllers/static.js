@@ -7,8 +7,16 @@ module.exports = (app) => {
         res.render('vendas')
     })
 
-    app.get('/alugueis', (req, res, next) => {
-        res.render('alugueis')
+    app.get('/alugueisr', (req, res, next) => {
+        res.render('alugueisr')
+    })
+
+    app.get('/alugueisc', (req, res, next) => {
+        res.render('alugueisc')
+    })
+
+    app.get('/locacao', (req, res, next) => {
+        res.render('locacao')
     })
 
     app.get('/textpesquisa', (req, res, next) => {

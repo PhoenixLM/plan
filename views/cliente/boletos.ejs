@@ -6,19 +6,20 @@
     <% include ../includes/headerPainel.ejs %>
 
     <!-- Title Page-->
-    <title>Boletos</title>
+    <title>Dashboard</title>
 
 </head>
 
 <body class="animsition">
     <!-- PAGE WRAPPER -->
     <div class="page-wrapper">
+
         <!-- HEADER DESKTOP-->
         <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="#">
+                        <a href="/cliente/painel">
                             <img src="/resources/plano-logo.png" alt="Plano Imóveis" />
                         </a>
                     </div>
@@ -31,49 +32,34 @@
                             </li>
                             <li>
                                 <a href="/cliente/boletos">
-                                    <i class="fas fa-users"></i>
+                                    <i class="fas fa-file"></i>
                                     <span class="bot-line"></span>Boletos</a>
                             </li>
                         </ul>
                     </div>
+                    <style>
+                    .plano-cliente-logout {
+                        display: block;
+                        color: #333;
+                        padding: 15px 25px;
+                        font-size: 14px;
+                    }
+                    .plano-cliente-logout a, .plano-cliente-logout i {
+                        color: #fff;
+                    }
+                    .plano-cliente-logout a i{
+                        line-height: 1;
+                        margin-right: 20px;
+                        font-size: 18px;
+                        vertical-align: middle;
+                    }
+                    </style>
                     <div class="header__tool">
                         <div class="account-wrap">
-                            <div class="account-item account-item--style2 clearfix js-item-menu">
-                                <div class="image">
-                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                </div>
-                                <div class="content">
-                                    <a class="js-acc-btn" href="#">john doe</a>
-                                </div>
-                                <div class="account-dropdown js-dropdown">
-                                    <div class="info clearfix">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="name">
-                                                <a href="#">john doe</a>
-                                            </h5>
-                                            <span class="email">johndoe@example.com</span>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__footer">
-                                        <a href="/login/logout">
-                                            <i class="zmdi zmdi-power"></i>Logout</a>
-                                    </div>
-                                </div>
+                            <div class="plano-cliente-logout">
+                                <a href="/login/logout">
+                                    <i class="zmdi zmdi-power"></i>Logout
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +73,7 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="/cliente/painel">
                             <img src="/resources/plano-logo.png" alt="Plano Imóveis" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -108,118 +94,27 @@
                         </li>
                         <li>
                             <a href="/cliente/boletos">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-file"></i>
                                 <span class="bot-line"></span>Boletos</a>
+                        </li>
+                        <li>
+                            <a href="/login/logout">
+                                <i class="fas fa-power-off"></i>
+                                <span class="bot-line"></span>Logout</a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </header>
-        <div class="sub-header-mobile-2 d-block d-lg-none">
-            <div class="header__tool">
-                <div class="account-wrap">
-                    <div class="account-item account-item--style2 clearfix js-item-menu">
-                        <div class="image">
-                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                        </div>
-                        <div class="content">
-                            <a class="js-acc-btn" href="#">john doe</a>
-                        </div>
-                        <div class="account-dropdown js-dropdown">
-                            <div class="info clearfix">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="name">
-                                        <a href="#">john doe</a>
-                                    </h5>
-                                    <span class="email">johndoe@example.com</span>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__body">
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__footer">
-                                <a href="/login/logout">
-                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- END HEADER MOBILE -->
 
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
 
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="#">Admin</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Boletos</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END BREADCRUMB-->
-
             <!-- MAIN CONTENT-->
             <section class="main-content">
-
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-
-                        <div class="table-data__tool">
-                            <div class="table-data__tool-left">
-                                <div class="rs-select2--light rs-select2--md">
-                                    <select class="js-select2" name="property">
-                                        <option selected="selected">All Properties</option>
-                                        <option value="">Option 1</option>
-                                        <option value="">Option 2</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                                <div class="rs-select2--light rs-select2--sm">
-                                    <select class="js-select2" name="time">
-                                        <option selected="selected">Today</option>
-                                        <option value="">3 Days</option>
-                                        <option value="">1 Week</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                                <button class="au-btn-filter">
-                                    <i class="zmdi zmdi-filter-list"></i>filtrar</button>
-                            </div>
-                        </div>
-
                         <div class="row m-t-25">
                             <div class="table-responsive m-b-40">
                                 <!-- DATA TABLE -->
@@ -238,7 +133,7 @@
                                                     <td><%= boletos[i]._id %></td>
                                                     <td><%= boletos[i].vencimento %></td>
                                                     <td><%= boletos[i].valor %></td>
-                                                    <td><a href="/cliente/boletos/file/<%= boletos[i]._id %>">Ver Boleto</a></td>
+                                                    <td><a href="/cliente/boletos/file/<%= boletos[i]._id %>">Download</a></td>
                                                 </tr>
                                             <% } %>
                                         </tbody>
@@ -250,21 +145,21 @@
                 </div>
             </section>
             <!-- END MAIN CONTENT-->
-
+    
             <!-- COPYRIGHT-->
             <section class="p-t-60 p-b-20">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2018 Pleno Imóveis.</p>
+                                <p>Copyright © 2018 Plano Imóveis.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- END COPYRIGHT-->
-
+            
         </div>
         <!-- END PAGE CONTENT -->
 
@@ -274,4 +169,4 @@
     <% include ../includes/scriptPainel.ejs %>
 
 </body>
-
+</html>

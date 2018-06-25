@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <% include ../includes/headerPainel.ejs %>
+    <title>Imóvel - Novo</title>
+
+</head>
+
+<body class="animsition">
+    <!-- PAGE WRAPPER -->
+    <div class="page-wrapper">
+        
+        <% include ../includes/headerMenus.ejs %>
+
+        <!-- PAGE CONTENT-->
+        <div class="page-content--bgf7">
+
+            <!-- MAIN CONTENT-->
+            <section class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="table-responsive m-b-40">
+                                <h1 align="center">Novo imóvel (Venda)</h1><br/>
+
+                                <!-- CONTAINER -->
+                                <div class="container">
+                                    <% include ../includes/fineuploader.ejs %>
+                                    <br>
+                                    <form action="/admin/imoveis/new" method="POST">
+                                        <div class="form-group">
+                                            <label for="titulo">Título Anuncio:</label>
+                                            <input type="text" name="titulo" id="titulo" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cep">Cep:</label>
+                                            <input type="text" name="cep" id="cep" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="endereco">Endereço:</label>
+                                            <input type="text" name="endereco" id="endereco" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="valor">Valor:</label>
+                                            <input type="number" name="valor" id="valor" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="condominio">Condominio:</label>
+                                            <input type="number" name="condominio" id="condominio" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="iptu">IPTU:</label>
+                                            <input type="number" name="iptu" id="iptu" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Modalidade:</label>
+                                            <br>
+                                            <div class="form-check-inline">
+                                                <label><input type="radio" name="isVenda" id="isVenda" value="true" checked>Venda</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Oportunidade Única:</label>
+                                            <br>
+                                            <div class="form-check-inline">
+                                                <label><input type="radio" name="isOportunidade" id="isOportunidade" value="true">Sim</label>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <label><input type="radio" name="isOportunidade" id="isOportunidade" value="false" checked>Não</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Destaque:</label>
+                                            <br>
+                                            <div class="form-check-inline">
+                                                <label><input type="radio" name="isDestaque" id="isDestaque" value="true">Sim</label>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <label><input type="radio" name="isDestaque" id="isDestaque" value="false" checked>Não</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="select_tipo">Tipo:</label>
+                                            <% include ../includes/select-tipo.ejs %>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="select_procedencia">Procedência: </label>
+                                            <select name="procedencia" class="form-control" id="select_procedencia">
+                                                <option value="construcao">Em Construção</option>
+                                                <option value="novo">Novos / Prontos (1ª venda)</option>
+                                                <option value="revenda" selected>Pronto Revenda</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="select_bairro">Bairro:</label>
+                                            <% include ../includes/select-bairro.ejs %>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mPrivativo">Metros Privativos:</label>
+                                            <input type="number" name="mPrivativo" id="mPrivativo" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mTotal">Metros Total:</label>
+                                            <input type="number" name="mTotal" id="mTotal" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dormitorios">Dormitorios:</label>
+                                            <input type="number" name="dormitorios" id="dormitorios" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="suites">Suítes:</label>
+                                            <input type="number" name="suites" id="suites" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="banheiros">Banheiros:</label>
+                                            <input type="number" name="banheiros" id="banheiros" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="vagas">Vagas:</label>
+                                            <input type="number" name="vagas" id="vagas" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="descricao">Descrição:</label>
+                                            <textarea class="form-control" name="descricao" id="descricao"></textarea>
+                                        </div>
+                                        <br />
+                                        <button type="submit" class="btn btn-primary">Gravar</button>
+                                        <a class="btn btn-primary" href="/admin/imoveis">Voltar</a>
+                                    </form>
+                                </div>
+                                <!-- END CONTAINER -->
+
+
+
+
+                            </div>
+                            <!-- END DATA TABLE-->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END MAIN CONTENT-->
+
+            <!-- COPYRIGHT-->
+            <section class="p-t-60 p-b-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2018 Plano Imóveis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END COPYRIGHT-->
+        </div>
+        <!-- END PAGE CONTENT -->
+
+    </div>
+    <!-- END PAGE WRAPPER -->
+
+    <% include ../includes/scriptPainel.ejs %>
+
+</body>
+</html>

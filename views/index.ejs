@@ -1,403 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Plano Imóveis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<% include includes/header %>
+<script>
+    $(document).ready(function(){
+        $('#menuContatos-arrow-right').css('display','none');
 
-  <% include includes/headerindex.ejs %>
+        $('#menuContatos-arrow-left').click(function() {
+            $('#menuContatos').animate({right: 0});
+            $('#menuContatos-arrow-right').css('display','inline');
+            $('#menuContatos-arrow-left').css('display','none');
+        });
+        
+        $('#menuContatos-arrow-right').click(function() {
+            $('#menuContatos').animate({right: "-890px"});
+            $('#menuContatos-arrow-right').css('display','none');
+            $('#menuContatos-arrow-left').css('display','inline');
+        });
+    });
+</script>
 
-  </head>
 <style>
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic);
+    body{
+        background-color:rgb(0, 0, 0);
+        color:white;
+    }
+    h1, h2{
+        color:white;
+    }
+    .fundologo{
+        background: linear-gradient(to top, transparent, #979696, transparent);
+        float:left;
+    }
+    #fundologo{
+        background: linear-gradient(to bottom, #979696, transparent,#979696);
+        width: 15%;
+    }
+    #fundologo1{
+        background: linear-gradient(to top, transparent, #979696, transparent);
+        width: 18%;
+    }
+    #fundobg{
+        background-image:url("images/bsb2.jpg");
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
+    #colortext{
+        color:white;  
+    }
+    .gradient-buttons .btn {
+        background-image: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.2) 49%, rgba(0,0,0,0.15) 51%, rgba(0,0,0,0.05));
+        background-repeat: repeat-x;
+    }
+    .card {
+        margin: 10px;
+        box-shadow: 0 5px 10px -2.5px;
+    }
+    .plano-btn-index{
+        border:1px solid white;
+        background: linear-gradient(to bottom, transparent , #858585 ,transparent);
+        height:90px;
+        width:250px;
+        margin:5px;
+        color:black;
+        font-weight:bold;
+        font-size:30px;
+    }
+    .Infoscolor{
+        position: absolute;
+        width: 100%;
+        height:500px;
+    }
+    #Mid{
+        margin-top:10%;
+    }
+    .Barra{
+        border-radius: 5px;
+        height: 25px;
+        width:100%;
+        background-color:#d4d4d4;
+        margin-top:30%;
+    }
+    .executivo{
+        margin-top:2%;
+        margin-left:1%;
+        height:455px;
+        width: 300px;
+        background: linear-gradient(to bottom, black , #858585 ,black);
+        font-family: Arial, Helvetica, sans-serif;
+        border:solid 5px white;
+        float:left;
+    }
+    .bold50{
+        font-weight: bold;
+        font-size:50px;
+    }
+    .bold{
+        font-weight: bold;
+    }
+    .exec{
+        color:white;
+    }
+    .centerp{
+        margin-top:20%;
+    }
+    .checkInfo{
+        float:left;
+        margin-top:2%;
+    }
+    .social{
+        margin-top:2%;
+        height:150px;
+ 
+    }
+    /*ICONES REDES SOCIAIS */
+    .btn-circle.btn-lg {
+        width: 50px;
+        height: 50px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px;
+    }
+    .fa-twitter{
+        color:white;
+    }
+    .fa-instagram{
+        color:white;
+    }
+    .ButtonText{
+        color:#fff;
+        font-size:25px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    /*CSS DO MENU*/
+    #menuContatos-arrow-left, #menuContatos-arrow-right {
+        font-size: 60px;
+    }
+    #menuContatos {
+        position: fixed;
+        bottom: 0;
+        right: -890px;
+        font-weight: bold;
+        font-size: 20px;
+        color: #fff;
+    }
+    #menuContatos ul li {
+        display: block;
+        background: linear-gradient(to top, transparent, #fda707c7, transparent);
+        margin: 0 5px;
+        padding: 5px;
+    }
+    #menuContatos .nav-item span {
+        font-size: 30px;
+    }
 
-body {
-  height: 100vh;
-  background-size: 100% 100%;
-  font-family: 'Roboto';
-  color: #fff;
-}
-
-.fabs {
-  bottom: 0;
-  position: fixed;
-  margin: 1em;
-  right: 0;
-}
-
-.fab {
-  display: block;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  text-align: center;
-  color: white;
-  margin: 20px auto 0;
-  box-shadow: 0px 5px 11px -2px rgba(0, 0, 0, 0.18), 0px 4px 12px -7px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  -webkit-transition: all .1s ease-out;
-  transition: all .1s ease-out;
-  position: relative;
-}
-
-.fab > i {
-  font-size: 28px;
-  line-height: 60px;
-  transition: all .2s ease-in-out;
-  transition-delay: 2s;
-}
-
-.fab.red {
-  background: #F44336;
-}
-
-.fab.pink {
-  background: #E91E63;
-}
-
-.fab.purple {
-  background: #9C27B0;
-}
-
-.fab.deep-purple {
-  background: #673AB7;
-}
-
-.fab.indigo {
-  background: #3F51B5;
-}
-
-.fab.blue {
-  background: #2196F3;
-}
-
-.fab.light-blue {
-  background: #03A9F4;
-}
-
-.fab.cyan {
-  background: #00BCD4;
-}
-
-.fab.teal {
-  background: #009688;
-}
-
-.fab.green {
-  background: #4CAF50;
-}
-
-.fab.light-green {
-  background: #8BC34A;
-}
-
-.fab.lime {
-  background: #CDDC39;
-}
-
-.fab.yellow {
-  background: #FFEB3B;
-}
-
-.fab.amber {
-  background: #FFC107;
-}
-
-.fab.orange {
-  background: #FF9800;
-}
-
-.fab.deep-orange {
-  background: #FF5722;
-}
-
-.fab.brown {
-  background: #795548;
-}
-
-.fab.grey {
-  background: #9E9E9E;
-}
-
-.fab.blue-grey {
-  background: #607D8B;
-}
-
-.fab:active,
-.fab:focus,
-.fab:hover {
-  box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
-}
-
-.fab:not(:last-child) {
-  width: 36px;
-  height: 36px;
-  margin: 20px auto 0;
-  opacity: 0;
-}
-
-.fab:not(:last-child) > i {
-  font-size: 18px;
-  line-height: 40px;
-  transition: all .3s ease-in-out;
-}
-
-.fabs:hover .fab:not(:last-child) {
-  opacity: 1;
-  width: 40px;
-  height: 40px;
-  margin: 15px auto 0;
-}
-
-.fab:nth-last-child(1) {
-  -webkit-transition-delay: 25ms;
-  transition-delay: 25ms;
-}
-
-.fab:not(:last-child):nth-last-child(2) {
-  -webkit-transition-delay: 20ms;
-  transition-delay: 20ms;
-}
-
-.fab:not(:last-child):nth-last-child(3) {
-  -webkit-transition-delay: 40ms;
-  transition-delay: 40ms;
-}
-
-.fab:not(:last-child):nth-last-child(4) {
-  -webkit-transition-delay: 60ms;
-  transition-delay: 60ms;
-}
-
-.fab:not(:last-child):nth-last-child(5) {
-  -webkit-transition-delay: 80ms;
-  transition-delay: 80ms;
-}
-
-[tooltip]:before {
-  font-family: 'Roboto';
-  font-weight: 600;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  background-color: #585858;
-  color: #fff;
-  content: attr(tooltip);
-  font-size: 12px;
-  visibility: hidden;
-  opacity: 0;
-  padding: 5px 7px;
-  margin-right: 10px;
-  position: absolute;
-  right: 100%;
-  bottom: 5%;
-  white-space: nowrap;
-}
-
-[tooltip]:hover:before,
-[tooltip]:hover:after {
-  visibility: visible;
-  opacity: 1;
-}
 </style>
 
-  <body id="page-top">
+<body>
+    <!--FUNDO BG-->
+    <div class="text-center" id="fundobg">
 
-    <!-- Navigation -->
-    <% include includes/navbarindex.ejs %>
+        <!--HEADER-->
+        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+            <header class="masthead mb-auto">
+                <div class="inner">
+                    <div id="logotopo" align="left">
+                        <img class="fundologo" src="images/plano.png">
+                    </div>
+                    <nav class="nav nav-masthead justify-content-center" style="font-size:25px;" >
+                        <a class="nav-link" id="colortext" href="#">Quem somos</a>
+                        <a class="nav-link" id="colortext" href="#">Nossa franquia virtual</a>
+                        <a class="nav-link" id="colortext" href="#">Seja nosso corretor associado</a>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <!--END HEADER-->
+
+        <!--BOTOES CONTAINER -->
+        <div class="container" align="center" id="Mid">
+            <a href="/locacao"><button type="button" class="plano-btn-index" >Alugar<br/><span class="ButtonText">Imóvel</span></button></a>
+            <a href="/vendas"> <button type="button" class="plano-btn-index" href="/vendas">Comprar<br/><span class="ButtonText">Imóvel</span></button></a>
+            <a href="/"><button type="button" class="plano-btn-index" href="">Anunciar<br/><span class="ButtonText">Seu imóvel</span></button></a>
+            <a href="/login"><button type="button" class="plano-btn-index" href="/login">Área Exclusiva<br/><span class="ButtonText">Clientes efetivos</span></button></a>
+        </div>
+        <!--END BOTOES CONTAINER -->
+
+        <!--BARRA BRANCA-->
+        <div class="Barra"></div>
+        <!--END BARRA BRANCA-->
+                
+        <!--INFOS-->
+        <div class="Infoscolor">
+            <div class="executivo" >
+                <a  href="" class="exec">  
+                    <p class="centerp"><h1 class="bold50">Alugue</h1>&nbsp;
+                    <h2 class="bold50">Seu espaço</h2>&nbsp;
+                    <h2 class="bold50">executivo</h2>&nbsp;
+                    <h2 class="bold50">conosco!</h2></p>&nbsp;
+                </a>
+            </div>
+
+            <!--CHECKINFO-->
+            <div class="checkInfo">
+                <ul>
+                    <li><h2 class="bold">INSTITUCIONAL</h2></li>
+                    <li><h2 class="bold">ATENDIMENTO EXCLUSIVO</h2></li>
+                </ul>
+                <ul align="left">
+                    <li><h4 class="bold">Avaliamos seu imóvel</h4></li>
+                    <li><h4 class="bold">Quero alugar</h4></li>
+                    <li><h4 class="bold">Quero vender</h4></li>
+                    <li><h4 class="bold">Nossa sede</h4></li>
+                    <li><h4 class="bold">Simule seu financiamento</h4></li>
+                    <li><h4 class="bold">Private Brokers</h4></li>
+                    <li><h4 class="bold">Sobre a Plano</h4></li>
+                    <li><h4 class="bold">Trabalhe conosco</h4></li>
+                    <li><h4 class="bold">Dúvidas e sugestões</h4></li>
+                    <li><h4 class="bold">Das taxas e honorários de serviços ao cliente proprietário</h4></li>
+                </ul>
+            </div>
+            <!--END CHECKINFO-->
+            
+            <!--REDES SOCIAIS-->
+            <div class="fundoSocial">
+            <div class="social">
+                    
+                <h2 class="bold">Acompanhe-nos nas redes sociais!</h2>
+                <a class="btn btn-social-icon btn-lg btn-facebook" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-facebook']);"><span class="fa fa-facebook"></span></a>
+                <a class="btn btn-social-icon btn-lg btn-instagram" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-instagram']);"><span class="fa fa-instagram"></span></a>
+                <a class="btn btn-social-icon btn-lg btn-twitter" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-twitter']);"><span class="fa fa-twitter"></span></a>
+                <a class="btn btn-social-icon btn-lg btn-google" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-google']);"><span class="fa fa-google"></span></a>
+                <a class="btn btn-social-icon btn-lg btn-youtube" onclick="_gaq.push(['_trackEvent', 'btn-social-icon', 'click', 'btn-youtube']);" style="background-color:white"><span class="fa fa-youtube"></span></a>
+            
+            </div><br/>
+            </div>
+            <!--END REDES SOCIAIS-->
+            <!--Instagram-->
+           <h3 align="right" style="margin-right: 5.4%">Instagram </h3> 
+            <br/>
+
+            <% include includes/instagramimg.ejs %>
+
+            <!--CONTATOS-->
+            <div id="menuContatos">
+                <ul class="nav">
+                    <li class="nav-item" id="menuContatos-arrow-left">
+                        <
+                    </li>
+                    <li class="nav-item" id="menuContatos-arrow-right">
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <span class="fa fa-whatsapp"></span><br/>
+                        Nosso Whatsapp<br/>
+                        Plano Imóveis<br/>
+                        (61) 98407-2008
+                    </li>
+                    <li class="nav-item">
+                        Atendimento<br />
+                        Telefone<br />
+                        (Central)<br />
+                        (61) 3034-7700
+                    </li>
+                    <li class="nav-item">
+                        Atendimento<br />
+                        E-mail<br />
+                        contato@planoimoveis.com.br
+                    </li>
+                    <li class="nav-item">
+                        Atendimento<br />
+                        CHAT<br />
+                        ONLINE
+                    </li>
+                    <li class="nav-item"><br />
+                        LIGAMOS<br />
+                        PARA VOCÊ
+                    </li>
+                </ul>
+            </div>
+            <!--END CONTATOS-->
+
+        </div>
+        <!--END INFOS-->
   
-            <div class="fabs">
-              <a href="" data-toggle="modal" data-target="#Whatsapp" target="_blank" class="fab green" tooltip="Whatsapp"><i class="fa fa-whatsapp"></i></a>
-            
-              <a href="" data-toggle="modal" data-target="#Central" target="_blank" class="fab indigo" tooltip="Central"><i class="fa fa-phone"></i></a>
-            
-              <a href="" data-toggle="modal" data-target="#Email" target="_blank" class="fab red" tooltip="Email"><i class="fa fa-envelope"></i></a>
-            
-              <a href="" target="_blank" class="fab indigo" tooltip="Ligamos para você!"><i class="fa fa-handshake-o"></i></a>
-            
-              <a class="fab red" tooltip="Contatos"><i class="fa fa-phone"></i></a>
-            </div>
-  
-           
-      
-            
+    </div>
+    <!--END FUNDO BG-->
 
- 
-  <!-- Central Modal -->
-      
-      <!-- Modal -->
-      <div class="modal fade" id="Whatsapp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Whatsapp</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              (61) 98407-2008
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="modal fade" id="Central" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Telefone (Central)</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              (61) 3032-7700
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-          </div>
-
-          <div class="modal fade" id="Email" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">E-mail</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  contato@planoimoveis.com.br
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-    
-
-
-    <section id="RedesSociais">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Acompanhe-nos nas redes sociais!</h2>
-            <hr class="my-4">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x  fa-facebook text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Facebook</h3>
-              <p class="text-muted mb-0"></p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-instagram text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Instagram</h3>
-              <p class="text-muted mb-0"></p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-youtube text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">YouTube</h3>
-              <p class="text-muted mb-0"></p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-twitter text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Twitter</h3>
-              <p class="text-muted mb-0"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="bg-primary" id="about">
-            <div class="container">
-      
-              <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                  <h2 class="section-heading text-white">Alugue seu espaço executivo conosco!</h2>
-                  <hr class="light my-4">
-                  <p class="text-faded mb-4">Lorem ipsum dolor sit amet, no vim nobis putent vivendo. Lorem soleat vocent mel te. Et vis case dicta, no nec quod probatus, eum ut oblique sententiae. Ei iusto everti neglegentur mea. Ea quod iusto nullam est, vis te adipiscing reprimique. An quo quaestio tincidunt, mea quod mutat partiendo an.</p>
-                  <a class="btn btn-light btn-xl js-scroll-trigger" data-toggle="modal" data-target="#Central">Contato</a>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section id="RedesSociais">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-12 text-center">
-                  <h2 class="section-heading">Acompanhe-nos nas redes sociais!</h2>
-                  <hr class="my-4">
-                </div>
-              </div>
-            </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-3 col-md-6 text-center">
-                  <div class="service-box mt-5 mx-auto">
-                    <i class="fa fa-4x  fa-facebook text-primary mb-3 sr-icons"></i>
-                    <h3 class="mb-3">Facebook</h3>
-                    <p class="text-muted mb-0"></p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                  <div class="service-box mt-5 mx-auto">
-                    <i class="fa fa-4x fa-instagram text-primary mb-3 sr-icons"></i>
-                    <h3 class="mb-3">Instagram</h3>
-                    <p class="text-muted mb-0"></p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                  <div class="service-box mt-5 mx-auto">
-                    <i class="fa fa-4x fa-youtube text-primary mb-3 sr-icons"></i>
-                    <h3 class="mb-3">YouTube</h3>
-                    <p class="text-muted mb-0"></p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                  <div class="service-box mt-5 mx-auto">
-                    <i class="fa fa-4x fa-twitter text-primary mb-3 sr-icons"></i>
-                    <h3 class="mb-3">Twitter</h3>
-                    <p class="text-muted mb-0"></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-    <footer class="footer" style="background-color:black">
-            <% include includes/footer.ejs %>
-    </footer>
-  
-
-    <% include includes/scriptindex.ejs %>
-  </body>
-
-    
-
-    <script src="../public/js/contato.js"></script>
+</body>
 </html>

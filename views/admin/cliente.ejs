@@ -1,24 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <% include ../includes/header.ejs %>
-    <title>Imovel</title>
+
+    <% include ../includes/headerPainel.ejs %>
+    <title>Cliente - Resetar Senha</title>
+
 </head>
-<body>
-    <% include ../includes/adminbar.ejs %>
-    <div class="container" style="padding-top: 100px;">
-        <form action="/admin/clientes/update/<%= cliente._id %>" method="POST">
-            <label for="username">Username:</label>
-            <input type="text" name="username" class="form-control" value="<%= cliente.username %>">
-            <br>
-            <button type="submit" class="btn btn-primary">Gravar</button>
-            <a class="btn btn-primary" href="/admin/clientes">Voltar</a>
-        </form>
+
+<body class="animsition">
+    <!-- PAGE WRAPPER -->
+    <div class="page-wrapper">
+        
+        <% include ../includes/headerMenus.ejs %>
+
+        <!-- PAGE CONTENT-->
+        <div class="page-content--bgf7">
+
+            <!-- MAIN CONTENT-->
+            <section class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="table-responsive m-b-40">
+
+                                <!-- CONTAINER -->
+                                <div class="container">                                    
+                                    <form action="/admin/clientes/update/<%= cliente._id %>" method="POST">
+                                        <label for="username">Login:</label>
+                                        <input type="text" name="username" class="form-control" id="username" value="<%= cliente.username %>" readonly>
+                                        <label for="password">Nova Senha:</label>
+                                        <input type="password" name="password" class="form-control" id="password">
+                                        <label for="conf">Confirme Nova Senha:</label>
+                                        <input type="password" class="form-control" id="conf">
+                                        <br />
+                                        <button type="submit" class="btn btn-primary">Gravar</button>
+                                        <a class="btn btn-primary" href="/admin/clientes">Voltar</a>
+                                    </form>
+                                </div>
+                                <!-- END CONTAINER -->
+
+                            </div>
+                            <!-- END DATA TABLE-->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END MAIN CONTENT-->
+
+            <!-- COPYRIGHT-->
+            <section class="p-t-60 p-b-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2018 Plano Imóveis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END COPYRIGHT-->
+        </div>
+        <!-- END PAGE CONTENT -->
+
     </div>
+    <!-- END PAGE WRAPPER -->
+
+    <% include ../includes/scriptPainel.ejs %>
+
 </body>
 </html>
-
-

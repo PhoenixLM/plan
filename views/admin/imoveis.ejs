@@ -4,9 +4,7 @@
 <head>
 
     <% include ../includes/headerPainel.ejs %>
-
-    <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>Imóveis</title>
 
 </head>
 
@@ -19,30 +17,6 @@
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
 
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="#">Admin</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Imóveis</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END BREADCRUMB-->
-
             <!-- MAIN CONTENT-->
             <section class="main-content">
 
@@ -51,38 +25,33 @@
 
                         <div class="table-data__tool">
                             <div class="table-data__tool-left">
-                                <div class="rs-select2--light rs-select2--md">
-                                    <select class="js-select2" name="property">
-                                        <option selected="selected">All Properties</option>
-                                        <option value="">Option 1</option>
-                                        <option value="">Option 2</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                                <div class="rs-select2--light rs-select2--sm">
-                                    <select class="js-select2" name="time">
-                                        <option selected="selected">Today</option>
-                                        <option value="">3 Days</option>
-                                        <option value="">1 Week</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                                <button class="au-btn-filter">
-                                    <i class="zmdi zmdi-filter-list"></i>filtrar</button>
                             </div>
                             <div class="table-data__tool-right">
-                                <a href="./imoveis/new">
-                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                    <i class="zmdi zmdi-plus"></i>novo imóvel</button></a>
+                                    <a href="./imoveis/newLocacaoR">
+                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <i class="zmdi zmdi-plus"></i>novo imóvel (Locação Residencial)</button></a>
+
+                                    <a href="./imoveis/newLocacaoC">
+                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <i class="zmdi zmdi-plus"></i>novo imóvel (Locação Comercial)</button></a>
+                                    
+                                    
+                                    <a href="./imoveis/newVenda">
+                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <i class="zmdi zmdi-plus"></i>novo imóvel (Venda)</button></a>
+                                    
                             </div>
                         </div>
 
+                            
+                        </div>
                         <div class="row m-t-25">
                             <div class="table-responsive m-b-40">
                                 <!-- DATA TABLE -->
                                 <table class="table table-borderless table-data3">
                                     <thead class="blue-grey lighten-4">
                                         <tr>
+                                            <th>TITULO DO ANUNCIO</th>
                                             <th>ID</th>
                                             <th>CEP</th>
                                             <th>ENDEREÇO</th>
@@ -95,12 +64,13 @@
                                     <tbody>
                                         <% for(var i = 0; i < imovels.length; i++) { %>
                                             <tr>
+                                                <td><%= imovels[i].titulo %></td>
                                                 <td><%= imovels[i]._id %></td>
                                                 <td><%= imovels[i].cep %></td>
                                                 <td><%= imovels[i].endereco %></td>
                                                 <td><%= imovels[i].isVenda ? "VENDA" : "ALUGUEL" %></td>
-                                                <td><%= imovels[i].isDestaque ? "DESTAQUE" : "" %></td>
-                                                <td><%= imovels[i].isOportunidade ? "OPORTUNIDADE" : "" %></td>
+                                                <td><%= imovels[i].isDestaque ? "SIM" : "NÃO" %></td>
+                                                <td><%= imovels[i].isOportunidade ? "SIM" : "NÃO" %></td>
                                                 <td><a href="/admin/imoveis/search/<%= imovels[i]._id %>">Editar</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/admin/imoveis/delete/<%= imovels[i]._id %>">Deletar</a></td>
                                             </tr>
                                         <% } %>
@@ -120,7 +90,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2018 Pleno Imóveis.</p>
+                                <p>Copyright © 2018 Plano Imóveis.</p>
                             </div>
                         </div>
                     </div>
@@ -137,3 +107,4 @@
     <% include ../includes/scriptPainel.ejs %>
 
 </body>
+</html>

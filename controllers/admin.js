@@ -52,8 +52,16 @@ module.exports = (app) => {
         })
     })
 
-    app.get('/admin/imoveis/new', (req, res, next) => {
-        res.render('admin/imovel-form')
+    app.get('/admin/imoveis/newLocacaoC', (req, res, next) => {
+        res.render('admin/imovel-formLC')
+    })
+
+    app.get('/admin/imoveis/newLocacaoR', (req, res, next) => {
+        res.render('admin/imovel-formLR')
+    })
+
+    app.get('/admin/imoveis/newVenda', (req, res, next) => {
+        res.render('admin/imovel-formV')
     })
 
     app.post('/admin/imoveis/new', (req, res, next) => {
