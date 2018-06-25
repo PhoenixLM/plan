@@ -19,7 +19,7 @@
             
             (post) /admin/uploadBoleto
                 recebe um arquivo a ser armazenado na pasta tmp/.
-                Ver (tests/helpers/moveBoletoToTmpSpec.js). Se o recebimento
+                Ver (tests/helpers/moveToTmpSpec.js). Se o recebimento
                 do arquivo obtever erros, enviar um JSON como tal:
                     {
                         "success":false

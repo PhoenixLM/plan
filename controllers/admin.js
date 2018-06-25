@@ -4,7 +4,6 @@ const Cliente   = require('../models/cliente')
 const Boleto    = require('../models/boleto')
 const moveTo    = require('../helpers/moveToTmp')
 const moveFrom  = require('../helpers/moveImgFromTmp')
-const moveBTo   = require('../helpers/moveBoletoToTmp')
 const moveBFrom = require('../helpers/moveBoletoFromTmp')
 
 module.exports = (app) => {
@@ -25,7 +24,7 @@ module.exports = (app) => {
 
     app.post('/admin/uploadBoleto', (req, res, next) => {
         if(req.files.qqfile) {
-            moveBTo(req, (err) => {
+            moveTo(req, (err) => {
                 if(err) res.send({'success': false})
                 else res.send({'success': true})
             })
