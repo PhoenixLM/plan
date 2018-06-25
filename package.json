@@ -7,16 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yvesnrb/plano-imoveis.git"
-  },
-  "author": "Yves Bodê",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yvesnrb/plano-imoveis/issues"
-  },
-  "homepage": "https://github.com/yvesnrb/plano-imoveis#readme",
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
