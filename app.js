@@ -5,7 +5,8 @@ const config = require('config')
 const _HOST = config.get('Server.host')
 const _PORT = config.get('Server.port')
 
-const server = http.listen(_PORT, _HOST, (err) => {
+//const server = http.listen(_PORT, _HOST, (err) => {
+const server = http.listen(process.env.PORT || 3000, (err) => {
     if(err) console.log(err)
     const host = server.address().address
     const port = server.address().port
