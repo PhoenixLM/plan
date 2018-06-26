@@ -3,10 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engine": {
+    "node": "8.11.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yvesnrb/plano-imoveis.git"
+  },
+  "author": "Yves Bodê",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yvesnrb/plano-imoveis/issues"
+  },
+  "homepage": "https://github.com/yvesnrb/plano-imoveis#readme",
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
@@ -22,5 +35,8 @@
     "mongoose": "^5.1.1",
     "pm2": "^2.10.3",
     "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
   }
 }
