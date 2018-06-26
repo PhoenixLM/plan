@@ -6,10 +6,10 @@
 
     "Mongo": {
         "host": "tatooine.mongodb.umbler.com",
-        "port": "49548",
-        "db"  : "db-plano",
-        "user": "user-plano",
-        "pswd": "senha-plano"
+        "port": "49673",
+        "db"  : "dbplano",
+        "user": "userplano",
+        "pswd": "senha-plan0"
     },
 
     "Session": {
