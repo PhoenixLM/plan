@@ -12,7 +12,6 @@
     var procedencia = 'null';
     function setProc(proc) {
         procedencia = proc;
-        console.log(procedencia);
     }
     function spawnCard(imovel) {
         function UrlExists(url) {
@@ -23,7 +22,7 @@
         }
         var url = 'img/' + imovel._id + '/' + 'thumb.jpg'
         if(!(UrlExists(url))) {
-            url = 'img/default/thumb.jpg'
+            url = '/img/default/thumb.jpg'
         }
         var titulo = imovel.titulo;
         var valor = "R$" + imovel.valor;
@@ -72,7 +71,6 @@
         $('#searchResults').empty();
         $.getJSON('/search/vendas/' + procedencia + '&' + tipo + '&' + bairro + '&' + preco, function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i]);
             }
         });
@@ -81,7 +79,6 @@
         $('#searchResults').empty();
         $.getJSON('/search/vendas/destaques', function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i]);
             }
         });
@@ -90,7 +87,6 @@
         $('#searchResults').empty();
         $.getJSON('/search/vendas/oportunidades', function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i]);
             }
         });
@@ -103,7 +99,6 @@
     }
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
-        searchDestaques();
         $(".radioGroup").click(function () {
             $(".radioGroup").removeClass("active");
             $(this).addClass("active");
@@ -188,7 +183,7 @@
             <div id="header" class="row">
                 <div class="col-1">
                     <div id="logotopo" align="left">
-                        <a href="/"><img class="fundologo" src="images/plano.png"></a>
+                        <a href="/"><img class="fundologo" src="/images/plano.png"></a>
                     </div>
                 </div>
                 <div class="col-11">
@@ -303,16 +298,45 @@
             </div>
 
             
-        <!--BARRA BRANCA-->
-        <div class="Barra"></div>
-        <!--END BARRA BRANCA-->
+            <!--BARRA BRANCA-->
+            <div class="Barra"></div>
+            <!--END BARRA BRANCA-->
             
 
             <div class="row" id="conteudo">
-                <div class="col-12">
-                    <h1 align="center">Destaques de Vendas</h1>
+                <div class="col-2"></div>
+                <div class="col-8 my-5">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h3><%= imovel.titulo %></h3>
+                        </div>
+                        <img class="card-img" height="300" src="/img/<%= imovel.id %>/0.jpg" />
+                        <div class="card-body">
+                            CEP: <%= imovel.cep %><br />
+                            ENDEREÇO: <%= imovel.endereco %><br />
+                            VALOR: <%= imovel.valor %><br />
+                            CONDOMINIO: <%= imovel.condominio %><br />
+                            IPTU: <%= imovel.iptu %><br />
+                            VENDA: <%= imovel.isVenda %><br />
+                            <% if (imovel.isOportunidade == true) { %>
+                                OPORTUNIDADE! <br />
+                            <% } %>
+                            <% if (imovel.isDestaque == true) { %>
+                                DESTAQUE! <br />
+                            <% } %>
+                            TIPO: <%= imovel.tipo %><br />
+                            BAIRRO: <%= imovel.bairro %><br />
+                            METROS PRIVATIVOS: <%= imovel.mPrivativo %>m<br />
+                            METROS TOTAL: <%= imovel.mTotal %>m<br />
+                            DORMITÓRIOS: <%= imovel.dormitorios %><br />
+                            SUíTES: <%= imovel.suites %><br />
+                            BANHEIROS: <%= imovel.banheiros %><br />
+                            VAGAS: <%= imovel.vagas %><br />
+                            DESCRICAO: <%= imovel.descricao %><br />
+                        </div>
+                    </div>
                 </div>
-                <div id="searchResults" class="d-flex flex-wrap justify-content-center" style="padding:5px"></div>
+                <div class="col-2"></div>
             </div>
 
         </div>
