@@ -99,6 +99,8 @@
         if($('.submenu').css('display','none')){
             $('.submenu').css('display','contents');
             $('#searchBox').html(objButton.innerText);
+            $('#menu button').css('display', 'block');
+            $(objButton).css('display', 'none');
         }
     }
     $(document).ready(function() {
@@ -152,7 +154,7 @@
     }
     #menu button {
         display: block;
-        background-color: #87ceea;
+        background-color: #ff9900;
         margin: 15px 5px;
         border: 0;
         padding: 10px;
