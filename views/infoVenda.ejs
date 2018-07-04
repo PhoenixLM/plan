@@ -313,29 +313,32 @@
                         <div class="card-header text-center">
                             <h3><%= imovel.titulo %></h3>
                         </div>
-                        <img class="card-img" height="300" src="/img/<%= imovel.id %>/0.jpg" />
+                        <div class="text-center">
+                            <img class="card-img" height="300" src="/img/<%= imovel.id %>/0.jpg" />
+                          </div>
+                        
                         <div class="card-body">
+
+                                
+                            <div style="float:left">
+                            <h4 > Local </h4>
                             CEP: <%= imovel.cep %><br />
                             ENDEREÇO: <%= imovel.endereco %><br />
-                            VALOR: <%= imovel.valor %><br />
-                            CONDOMINIO: <%= imovel.condominio %><br />
-                            IPTU: <%= imovel.iptu %><br />
-                            VENDA: <%= imovel.isVenda %><br />
-                            <% if (imovel.isOportunidade == true) { %>
-                                OPORTUNIDADE! <br />
-                            <% } %>
-                            <% if (imovel.isDestaque == true) { %>
-                                DESTAQUE! <br />
-                            <% } %>
-                            TIPO: <%= imovel.tipo %><br />
                             BAIRRO: <%= imovel.bairro %><br />
+                            <h4>Valores</h4>
+                            CONDOMINIO: R$ <%= imovel.condominio %><br />
+                            IPTU: R$ <%= imovel.iptu %><br />
+                            VALOR: R$ <%= imovel.valor %><br />
+                            <h4>Descrição</h4>
                             METROS PRIVATIVOS: <%= imovel.mPrivativo %>m<br />
+                            TIPO:<%= imovel.tipo %><br />
                             METROS TOTAL: <%= imovel.mTotal %>m<br />
                             DORMITÓRIOS: <%= imovel.dormitorios %><br />
                             SUíTES: <%= imovel.suites %><br />
                             BANHEIROS: <%= imovel.banheiros %><br />
                             VAGAS: <%= imovel.vagas %><br />
-                            DESCRICAO: <%= imovel.descricao %><br />
+                            <%= imovel.descricao %><br />
+                            </div>                         
                         </div>
                     </div>
                 </div>

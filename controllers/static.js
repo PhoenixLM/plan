@@ -19,7 +19,7 @@ module.exports = (app) => {
         res.render('locacao')
     })
 
-    app.get('/textpesquisa', (req, res, next) => {
-        res.render('textpesquisa')
+    app.get('/anunciar_imovel', (req, res, next) => {
+        res.render('anunciar_imovel')
     })
 }
