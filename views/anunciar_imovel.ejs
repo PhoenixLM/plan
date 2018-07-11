@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <% include ./includes/header.ejs %>
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <title>Alugar</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<script>
+    var procedencia = 'null';
+    function setProc(proc) {
+        procedencia = proc;
+        console.log(procedencia);
+    }
+    function spawnCard(imovel) {
+        function UrlExists(url) {
+            var http = new XMLHttpRequest();
+            http.open('HEAD', url, false);
+            http.send();
+            return http.status != 404;
+        }
+        var url = 'img/' + imovel._id + '/' + 'thumb.jpg'
+        if(!(UrlExists(url))) {
+            url = 'img/default/thumb.jpg'
+        }
+        var titulo = imovel.titulo;
+        var valor = "R$" + imovel.valor
+        var dormitorios = "&nbsp";
+        var suites = "";
+        var banheiros = "";
+        var vagas = "";
+        var iptu = "&nbsp";
+        var cond = "&nbsp";
+        if (imovel.dormitorios !== null && imovel.dormitorios !== undefined) {
+            dormitorios = "<i class='fa fa-bed' data-toggle='tooltip' title='Dormitórios'></i>   " + imovel.dormitorios + "&nbsp;&nbsp;&nbsp;";
+        }
+        if (imovel.suites !== null && imovel.suites !== undefined) {
+            suites = "<i class='fa fa-bed' data-toggle='tooltip' title='Suítes'></i>   " + imovel.suites + "&nbsp;&nbsp;&nbsp;";
+        }
+        if (imovel.banheiros !== null && imovel.banheiros !== undefined) {
+            banheiros = "<i class='fa fa-shower' data-toggle='tooltip' title='Banheiros'></i>   " + imovel.banheiros + "&nbsp;&nbsp;&nbsp;";
+        }
+        if (imovel.vagas !== null && imovel.vagas !== undefined) {
+            vagas = "<i class='fa fa-car' data-toggle='tooltip' title='Vagas'></i>   " + imovel.vagas + "&nbsp;&nbsp;&nbsp;";
+        }
+        if (imovel.iptu !== null && imovel.iptu !== undefined) {
+            iptu = "IPTU: R$" + imovel.iptu;
+        }
+        if (imovel.condominio !== null && imovel.condominio !== undefined) {
+            cond = "COND: R$" + imovel.condominio;
+        }
+        var card = "<div class='card' style='margin:5px'>" + 
+                   "<img class='card-img-top' src='" + url + "' alt='Card image cap'>" +
+                   "<div class='card-body'>" +
+                   "<h4 class='card-title'><a>" + titulo + "</a></h4>" +
+                   "<h5 class='card-title'><a>" + valor + "</a></h4>" +
+                   "<p class='card-text'>" + dormitorios + suites + banheiros + vagas + "</p>" +
+                   "</div>";
+        $('#searchResults').append(card);
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+            
+        });
+    }
+    function search() {
+        var tipo = $('#select_tipo').val();
+        var bairro = $('#select_bairro').val();
+        var preco = $('#number_preco').val();
+        if(preco === '') preco = "null"
+        console.log('Pesquisa recebida: ' + tipo + ' ' + bairro + ' ' + preco);
+        $('#searchResults').empty();
+        $.getJSON('/search/alugueis/' + tipo + '&' + bairro + '&' + preco, function(jq) {
+            for(var i = 0; i < jq.length; i++) {
+                console.log(jq[i]);
+                spawnCard(jq[i]);
+            }
+        });
+    }
+
+    function searchDestaques() {
+        $('#searchResults').empty();
+        $.getJSON('/search/alugueis/destaques', function(jq) {
+            for(var i = 0; i < jq.length; i++) {
+                console.log(jq[i]);
+                spawnCard(jq[i]);
+            }
+        });
+    }
+
+    function searchOportunidades() {
+        $('#searchResults').empty();
+        $.getJSON('/search/alugueis/oportunidades', function(jq) {
+            for(var i = 0; i < jq.length; i++) {
+                console.log(jq[i]);
+                spawnCard(jq[i]);
+            }
+        });
+    }
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        searchDestaques();
+        searchOportunidades();
+        $(".radioGroup").click(function () {
+            $(".radioGroup").removeClass("active");
+            $(this).addClass("active");
+            procedencia = event.target.id;
+            search();
+            
+        });
+    });
+</script>
+<style>
+    body {
+        background-color:#dcdcdc;
+    }
+    .fundologo {
+        display: block;
+        background: linear-gradient(to top, transparent, #fbfdfe, transparent);
+        margin-top: 15px;
+        float:left;
+    }
+    #header, #menu {
+        background-color: #dcdcdc;
+    }
+    #header .row {
+        margin: 20px 0;
+    }
+    #header #menu-top {
+        margin: 10px 0;
+        font-size: 20px;
+    }
+    #header .title-alugueis h2 {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #000;
+        line-height: 0.1em;
+        margin: 10px 0 20px;
+    }
+    #header .title-alugueis .title {
+        font-size: 50px;
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #dcdcdc;
+        padding: 0 10px;
+    }
+    .span-gray {
+        background-color: #bababa;
+        font-size: 20px;
+        text-align: center;
+        padding: 5px 30px;
+    }
+   
+    #menu button {
+        background-color: #87ceea;
+        float:right;    
+        border: 2px solid #fff;
+    }
+    .submenu {
+        width: 100%;
+        margin: 0;
+        display: none;
+    }
+    .submenu .form-control {
+        margin-top: 20px;
+    }
+
+    #searchResults {
+        margin: 0 auto;
+    }
+
+.red{
+    color:red;
+    }
+.form-area
+{
+    background-color: #FAFAFA;
+	padding: 10px 40px 60px;
+	margin: 10px 0px 60px;
+	border: 1px solid GREY;
+	}
+</style>
+<body>
+
+    <!-- CONTENT WRAPER -->
+    <div id="content-wraper">
+        <!-- CONTAINER FLUID -->
+        <div class="container-fluid">
+
+
+            <!--HEADER-->
+            <div id="header" class="row">
+                <div class="col-1">
+                    <div id="logotopo" align="left">
+                            <a href="/"> <img class="fundologo" src="images/plano.png"></a>
+                    </div>
+                </div>
+                <div class="col-11">
+                    <div class="row justify-content-center">
+                        <nav class="nav" id="menu-top">
+                            <a class="nav-link" href="#">Quem somos</a>
+                            <a class="nav-link" href="#">Nossa franquia virtual</a>
+                            <a class="nav-link" href="#">Seja nosso corretor associado</a>
+                        </nav>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-9 title-alugueis">
+                            <h2><span class="title">Anunciar Imóvel</span></h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="span-gray">
+                            Preencha os campos abaixo
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--END HEADER-->
+            <div class="container" style="margin-left:40%">
+                    <div class="col-md-5">
+                        <div class="form-area">  
+                                <form action="/admin/imoveis/new" method="POST">
+                            <br style="clear:both">
+                                        <h3 style="margin-bottom: 25px; text-align:center;">Anuncie seu imóvel</h3>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="numero1" name="numero1" placeholder="Telefone para contato" required>
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="text" class="form-control" id="numero2" name="numero2" placeholder="Telefone Celular" required>
+                                            </div>
+                                        <div class="form-group">
+                                                <input type="text" class="form-control" id="CEP" name="CEP" placeholder="CEP" required>
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço" required>
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" required>
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" required>
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" required>
+                                        </div>
+                                        <div class="form-group">
+                                                <label>Tipo de Comercialização</label>
+                                                <br>
+                                                <div class="form-check-inline">
+                                                    <label><input type="radio" name="isLocacao" id="isLocacao" value="false">Venda</label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label><input type="radio" name="isLocacao" id="isLocacao" value="true">Locação</label>
+                                                </div>
+                                    </div>
+
+                                
+                            <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+
+                               
+                                </body>
+                                <script>
+                                $(document).ready(function(){ 
+    $('#characterLeft').text('140 characters left');
+    $('#message').keydown(function () {
+        var max = 140;
+        var len = $(this).val().length;
+        if (len >= max) {
+            $('#characterLeft').text('You have reached the limit');
+            $('#characterLeft').addClass('red');
+            $('#btnSubmit').addClass('disabled');            
+        } 
+        else {
+            var ch = max - len;
+            $('#characterLeft').text(ch + ' characters left');
+            $('#btnSubmit').removeClass('disabled');
+            $('#characterLeft').removeClass('red');            
+        }
+    });    
+});
+</script>
+                                </html>

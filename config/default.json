@@ -5,11 +5,11 @@
     },
 
     "Mongo": {
-        "host": "localhost",
-        "port": "27017",
-        "db"  : "test",
-        "user": "",
-        "pswd": ""
+        "host": "tatooine.mongodb.umbler.com",
+        "port": "49673",
+        "db"  : "dbplano",
+        "user": "userplano",
+        "pswd": "senha-plan0"
     },
 
     "Session": {

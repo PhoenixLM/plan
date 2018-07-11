@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <% include ./includes/header.ejs %>
+    <link rel="stylesheet" href="/css/stylesheet.css">
     <title>Comprar</title>
 </head>
 <script>
     var procedencia = 'null';
     function setProc(proc) {
         procedencia = proc;
-        console.log(procedencia);
     }
     function spawnCard(imovel) {
         function UrlExists(url) {
@@ -22,7 +22,7 @@
         }
         var url = 'img/' + imovel._id + '/' + 'thumb.jpg'
         if(!(UrlExists(url))) {
-            url = 'img/default/thumb.jpg'
+            url = '/img/default/thumb.jpg'
         }
         var titulo = imovel.titulo;
         var valor = "R$" + imovel.valor;
@@ -71,7 +71,6 @@
         $('#searchResults').empty();
         $.getJSON('/search/vendas/' + procedencia + '&' + tipo + '&' + bairro + '&' + preco, function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i]);
             }
         });
@@ -80,7 +79,6 @@
         $('#searchResults').empty();
         $.getJSON('/search/vendas/destaques', function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i]);
             }
         });
@@ -89,7 +87,6 @@
         $('#searchResults').empty();
         $.getJSON('/search/vendas/oportunidades', function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i]);
             }
         });
@@ -98,13 +95,10 @@
         if($('.submenu').css('display','none')){
             $('.submenu').css('display','contents');
             $('#searchBox').html(objButton.innerText);
-            $('#menu button').css('color','#000000');
-            $(objButton).css('color','#87ceea');
         }
     }
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
-        searchDestaques();
         $(".radioGroup").click(function () {
             $(".radioGroup").removeClass("active");
             $(this).addClass("active");
@@ -112,6 +106,71 @@
         });
     });
 </script>
+<style>
+    .fundologo {
+        display: block;
+        background: linear-gradient(to top, transparent, #fbfdfe, transparent);
+        margin-top: 15px;
+        float:left;
+    }
+    #header, #menu, #conteudo {
+        background-color: #dcdcdc;
+    }
+    #header .row {
+        margin: 20px 0;
+    }
+    #header #menu-top {
+        margin: 10px 0;
+        font-size: 20px;
+    }
+    #header .title-vendas h2 {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #000;
+        line-height: 0.1em;
+        margin: 10px 0 20px;
+    }
+    #header .title-vendas .title {
+        font-size: 50px;
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #dcdcdc;
+        padding: 0 10px;
+    }
+    .span-gray {
+        background-color: #bababa;
+        font-size: 20px;
+        text-align: center;
+        padding: 5px 30px;
+    }
+    #menu {
+        border-bottom: 1px solid #808080;
+    }
+    #menu button {
+        display: block;
+        background-color: #87ceea;
+        margin: 15px 5px;
+        border: 0;
+        padding: 10px;
+        width: 100%;
+        border: 2px solid #fff;
+    }
+    .submenu {
+        width: 100%;
+        margin: 0;
+        display: none;
+    }
+    .submenu .form-control {
+        margin-top: 20px;
+    }
+    #conteudo {
+        margin-top: 20px;
+        border-top: 1px solid #808080;
+        border: 1px solid #000;
+    }
+    #searchResults {
+        margin: 0 auto;
+    }
+</style>
 <body>
 
     <!-- CONTENT WRAPER -->
@@ -124,7 +183,7 @@
             <div id="header" class="row">
                 <div class="col-1">
                     <div id="logotopo" align="left">
-                        <a href="/"><img class="fundologo" src="images/plano.png"></a>
+                        <a href="/"><img class="fundologo" src="/images/plano.png"></a>
                     </div>
                 </div>
                 <div class="col-11">
@@ -136,8 +195,8 @@
                         </nav>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-9 title-vendas">
-                            <h2><span class="title">Vendas</span></h2>
+                        <div class="col-9 title-alugueis    ">
+                            <h2><span class="title">Alugueis</span></h2>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -230,25 +289,60 @@
                         </select>
                     </div>
                     <div class="col-2">
-                        <input type="number" class="form-control" id="number_preco" placeholder="Valor" />
+                        <input type="number" class="form-control" id="number_preco" placeholder="Valor">
                     </div>
                     <div class="col-1">
-                        <button type="button" id="btn_pesquisar" onclick="search();">Buscar</button>
+                        <button type="button" class="" id="btn_pesquisar" onclick="search();">Buscar</button>
                     </div>
                 </div>
             </div>
 
             
-        <!--BARRA BRANCA-->
-        <div class="Barra"></div>
-        <!--END BARRA BRANCA-->
-            
+            <!--BARRA BRANCA-->
+            <div class="Barra"></div>
+            <!--END BARRA BRANCA-->
 
-            <div class="row" id="conteudo">
-                <div class="col-12">
-                    <h1 align="center">Destaques de Vendas</h1>
-                </div>
+            <div class="row ">
                 <div id="searchResults" class="d-flex flex-wrap justify-content-center" style="padding:5px"></div>
+            </div>
+
+            <div class="row conteudo">
+                <div class="col-2"></div>
+                <div class="col-8 my-5">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h3><%= imovel.titulo %></h3>
+                        </div>
+                        <div class="text-center">
+                            <img class="card-img" height="300" src="/img/<%= imovel.id %>/0.jpg" />
+                          </div>
+                        
+                        <div class="card-body">
+
+                                
+                            <div style="float:left">
+                            <h4 > Local </h4>
+                            CEP: <%= imovel.cep %><br />
+                            ENDEREÇO: <%= imovel.endereco %><br />
+                            BAIRRO: <%= imovel.bairro %><br />
+                            <h4>Valores</h4>
+                            CONDOMINIO: R$ <%= imovel.condominio %><br />
+                            IPTU: R$ <%= imovel.iptu %><br />
+                            VALOR: R$ <%= imovel.valor %><br />
+                            <h4>Descrição</h4>
+                            METROS PRIVATIVOS: <%= imovel.mPrivativo %>m<br />
+                            TIPO:<%= imovel.tipo %><br />
+                            METROS TOTAL: <%= imovel.mTotal %>m<br />
+                            DORMITÓRIOS: <%= imovel.dormitorios %><br />
+                            SUíTES: <%= imovel.suites %><br />
+                            BANHEIROS: <%= imovel.banheiros %><br />
+                            VAGAS: <%= imovel.vagas %><br />
+                            <%= imovel.descricao %><br />
+                            </div>                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2"></div>
             </div>
 
         </div>

@@ -69,7 +69,6 @@ module.exports = (app) => {
             if(err) return next(err)
             moveFrom(req, imovel._id, (err) => {
                 if(err) return next(err)
-                console.log('sucesso!!!')
             })
             res.redirect('/admin/imoveis')
         })
@@ -96,6 +95,9 @@ module.exports = (app) => {
             imovel.set(req.body)
             imovel.save((err) => {
                 if(err) return next(err)
+                moveFrom(req, imovel._id, (err) => {
+                    if(err) return next(err)
+                })
                 res.redirect('/admin/imoveis')
             })
         })

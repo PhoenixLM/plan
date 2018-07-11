@@ -1,9 +1,6 @@
 body, html {
     height: 100%;
 }
-
-
-
 .nobg {
     /* Full height */
     height: 100%; 
@@ -13,22 +10,84 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 .fa-facebook {
     font-size: 40px;
 }
-
 .fa-youtube {
     font-size: 40px;
     color: #ff0000;
 }
-
 .fa-instagram {
     font-size: 40px;
     color: #cc7093;
 }
-
 .fa-twitter {
     font-size: 40px;
     color: #22bde4;
+}
+.fundologo {
+    display: block;
+    background: linear-gradient(to top, transparent, #fbfdfe, transparent);
+    margin-top: 15px;
+    float:left;
+}
+#header, #menu, #conteudo {
+    background-color: #dcdcdc;
+}
+#header .row {
+    margin: 20px 0;
+}
+#header #menu-top {
+    margin: 10px 0;
+    font-size: 20px;
+}
+#header .title-vendas h2 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+#header .title-vendas .title {
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #dcdcdc;
+    padding: 0 10px;
+}
+.span-gray {
+    background-color: #bababa;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px 30px;
+}
+#menu {
+    border-bottom: 1px solid #808080;
+}
+#menu button {
+    display: block;
+    background-color: #87ceea;
+    margin: 15px 5px;
+    border: 0;
+    padding: 10px;
+    width: 100%;
+    border: 2px solid #fff;
+}
+.submenu {
+    width: 100%;
+    margin: 0;
+    display: none;
+}
+.submenu .form-control {
+    margin-top: 20px;
+}
+#conteudo {
+    margin-top: 20px;
+    border-top: 1px solid #808080;
+    border: 1px solid #000;
+}
+#searchResults {
+    margin: 0 auto;
+}
+#btn_pesquisar {
+    background-color: #ff9900!important;
 }
