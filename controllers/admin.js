@@ -81,7 +81,6 @@ module.exports = (app) => {
             if(!imovel) return next()
             imovel.remove((err) => {
                 if(err) return next(err)
-                console.log('Sucesso')
                 res.redirect('/admin/imoveis')
             })
         })
