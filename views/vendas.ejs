@@ -13,7 +13,7 @@
         procedencia = proc;
         console.log(procedencia);
     }
-    function spawnCard(imovel) {
+    function spawnCard(imovel,divResult) {
         function UrlExists(url) {
             var http = new XMLHttpRequest();
             http.open('HEAD', url, false);
@@ -50,14 +50,15 @@
         if (imovel.condominio !== null && imovel.condominio !== undefined) {
             cond = "COND: R$" + imovel.condominio;
         }
-        var card = "<div class='card' style='margin:5px'>" + 
-                   "<img class='card-img-top' src='" + url + "' alt='Card image cap'>" +
+        var card = "<div class='col-sm-3'>" +
+                   "<div class='card'>" + 
+                   "<img class='card-img-top img-fluid' src='" + url + "' alt='Card image cap'>" +
                    "<div class='card-body'>" +
                    "<h4 class='card-title'><a href='/vendas/" + imovel._id + "'>" + titulo + "</a></h4>" +
                    "<h5 class='card-title'><a>" + valor + "</a></h4>" +
                    "<p class='card-text'>" + dormitorios + suites + banheiros + vagas + "</p>" +
                    "</div>";
-        $('#searchResults').append(card);
+        $(divResult).append(card);
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip(); 
         });
@@ -65,32 +66,46 @@
     function search() {
         var tipo = $('#select_tipo').val();
         var bairro = $('#select_bairro').val();
-        var preco = $('#number_preco').val();
-        if(preco === '') preco = "null"
-        console.log('Pesquisa recebida: ' + procedencia + ' ' + tipo + ' ' + bairro + ' ' + preco);
+        var valorMin = $('#select_valor_min').val();
+        var valorMax = $('#select_valor_max').val();
+        if(valorMin === '') valorMin = 0;
+        if(valorMax === '') valorMax = 0;
         $('#searchResults').empty();
-        $.getJSON('/search/vendas/' + procedencia + '&' + tipo + '&' + bairro + '&' + preco, function(jq) {
+        $.getJSON('/search/vendas/' + procedencia + '&' + tipo + '&' + bairro + '&' + valorMin + '&' + valorMax, function(jq) {
             for(var i = 0; i < jq.length; i++) {
                 console.log(jq[i]);
-                spawnCard(jq[i]);
+                spawnCard(jq[i],'#searchResults');
+            }
+        });
+    }
+    function searchAll() {
+        $('#searchResults').empty();
+        $.getJSON('/search/vendas/all', function(jq) {
+            for(var i = 0; i < jq.length; i++) {
+                console.log(jq[i]);
+                spawnCard(jq[i],'#searchResults');
             }
         });
     }
     function searchDestaques() {
-        $('#searchResults').empty();
+        $('#destaquesResults').empty();
         $.getJSON('/search/vendas/destaques', function(jq) {
             for(var i = 0; i < jq.length; i++) {
                 console.log(jq[i]);
-                spawnCard(jq[i]);
+                spawnCard(jq[i],'#destaquesResults');
             }
         });
     }
     function searchOportunidades() {
-        $('#searchResults').empty();
+        $('#oportunidadesResults').empty();
         $.getJSON('/search/vendas/oportunidades', function(jq) {
-            for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
-                spawnCard(jq[i]);
+            if (jq.length == 0) {
+                $('#oportunidadesResults').css('display','none');
+            } else {
+                $('#oportunidadesResults').removeAttr('display');
+                for(var i = 0; i < jq.length; i++) {
+                    spawnCard(jq[i],'#oportunidadesResults');
+                }
             }
         });
     }
@@ -105,6 +120,7 @@
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
         searchDestaques();
+        searchOportunidades();
         $(".radioGroup").click(function () {
             $(".radioGroup").removeClass("active");
             $(this).addClass("active");
@@ -229,26 +245,68 @@
                             <option value="zona industrial">Zona Industrial</option>
                         </select>
                     </div>
-                    <div class="col-2">
-                        <input type="number" class="form-control" id="number_preco" placeholder="Valor" />
+                    <div class="col-1">
+                        <select name="valorMin" class="form-control" id="select_valor_min">
+                            <option value="null" selected>Valor Mín.</option>
+                            <option value="200">R$ 200.000</option>
+                            <option value="400">R$ 400.000</option>
+                            <option value="750">R$ 750.000</option>
+                            <option value="1000">R$ 1.000.000</option>
+                            <option value="2000">R$ 2.000.000</option>
+                            <option value="5000">R$ 5.000.000</option>
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <select name="valorMax" class="form-control" id="select_valor_max">
+                            <option value="null" selected>Valor Max.</option>
+                            <option value="200">R$ 200.000</option>
+                            <option value="400">R$ 400.000</option>
+                            <option value="750">R$ 750.000</option>
+                            <option value="1000">R$ 1.000.000</option>
+                            <option value="2000">R$ 2.000.000</option>
+                            <option value="5000">R$ 5.000.000</option>
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" id="btn_pesquisar" onclick="searchAll();">Todos</button>
                     </div>
                     <div class="col-1">
                         <button type="button" id="btn_pesquisar" onclick="search();">Buscar</button>
                     </div>
                 </div>
-            </div>
 
-            
-        <!--BARRA BRANCA-->
-        <div class="Barra"></div>
-        <!--END BARRA BRANCA-->
-            
+                <div class="col-12">
+                    <div class="row justify-content-center">
+                        <div class="span-gray">
+                            Buscador integrado com Google maps
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
 
             <div class="row" id="conteudo">
                 <div class="col-12">
                     <h1 align="center">Destaques de Vendas</h1>
                 </div>
-                <div id="searchResults" class="d-flex flex-wrap justify-content-center" style="padding:5px"></div>
+                <div class="col-12">
+                    <div class="row" id="destaquesResults"></div>
+                </div>
+                
+                <div class="col-12">
+                    <h1 align="center">Oportunidades</h1>
+                </div>
+                <div class="col-12">
+                    <div class="row" id="oportunidadesResults"></div>
+                </div>
+                
+                <div class="col-12">
+                    <h1 align="center">Resultados da Pesquisa</h1>
+                </div>
+                <div class="col-12">
+                    <div class="row" id="searchResults"></div>
+                </div>
+                
             </div>
 
         </div>
