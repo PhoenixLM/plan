@@ -207,11 +207,11 @@
             <!--END HEADER-->
 
 
-            <div class="row" id="menu">
+            <div class="row" id="menu" style="border:none">
           
-                
+                <a href="/alugueisr" class="btn" style="position:absolute;width:15%;background:linear-gradient(to bottom, transparent , #ffa621 ,transparent);color:#000!important;"><b>Imóveis</b><br/><b>Residenciais</b></a>
      
-                    <div class="col-2" style="margin-left:20%">
+                    <div class="col-2" style="margin-left:20%;margin-top:1%">
                         <select name="tipo" class="form-control" id="select_tipo" width="30px">
                             <option value="null" selected>Tipo de Imóvel</option>
                             <option value="Box">Box</option>
@@ -227,7 +227,7 @@
                             <option value="Área">Área</option>
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2" style="margin-top:1%">
                         <select name="bairro" class="form-control" id="select_bairro">
                             <option value="null" selected>Bairro</option>
                             <option value="aguas claras">Aguas Claras</option>
@@ -260,11 +260,17 @@
                             <option value="zona industrial">Zona Industrial</option>
                         </select>
                     </div>
-                    <div class="col-2" > 
+                    <div class="col-2" style="margin-top:1%" > 
                         <input type="number" class="form-control" id="number_preco" placeholder="Valor">                       
                     </div>
                     <div class="col-1">
                         <button type="button" class="" id="btn_pesquisar" onclick="search();" style="height: 43px;width: 100px;">Buscar</button><br/><br/><br/>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row justify-content-center" style="margin-left:8%">
+                    <div class="span-gray">
+                        Buscador integrado com Google Maps
                     </div>
                 </div>
             </div>
@@ -275,7 +281,7 @@
         <!--END BARRA BRANCA-->
             
 
-            <div class="row" id="conteudo">
+            <div class="row" id="conteudo" style="border:none">
                 <div class="col-12">
                     <h1 align="center">Destaques de alugueis</h1>
                 </div>
