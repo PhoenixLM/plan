@@ -10385,7 +10385,7 @@ html.lightboxContent body {
 }
 .tituloThumb{
     height:70px;
-    /* background-color:#f37800; */
+    /* background-color:#f33300; */
     color:#fff;
     font-family: 'DIN Next W02 Black';
     text-transform: uppercase;
@@ -10393,37 +10393,37 @@ html.lightboxContent body {
     line-height: 30px;
     padding-left: 20px;
     padding-top: 10px;
-    /* background:url('../img/anuncie/img-Site.png') no-repeat 200px 35px #f37800; */
+    /* background:url('../img/anuncie/img-Site.png') no-repeat 200px 35px #f33300; */
     /* background-repeat: no-repeat;
     background-position: 200px 35px; */
 }
 .tituloThumb.sites{
-    background:url('../img/anuncie/img-Site.png') no-repeat 200px 27px #f37800;
+    background:url('../img/anuncie/img-Site.png') no-repeat 200px 27px #f33300;
 }
 .tituloThumb.redesSociais{
-    background:url('../img/anuncie/img-RedesSociais.png') no-repeat 180px 27px #f37800;
+    background:url('../img/anuncie/img-RedesSociais.png') no-repeat 180px 27px #f33300;
 }
 .tituloThumb.Mobile{
-    background:url('../img/anuncie/img-Mobile.png') no-repeat 153px 24px #f37800;
+    background:url('../img/anuncie/img-Mobile.png') no-repeat 153px 24px #f33300;
     padding-top: 25px;
     height: 55px;
 }
 .tituloThumb.Email{
-    background:url('../img/anuncie/img-Email.png') no-repeat 184px 27px #f37800;
+    background:url('../img/anuncie/img-Email.png') no-repeat 184px 27px #f33300;
 }
 .tituloThumb.OpenHouse{
-    background:url('../img/anuncie/img-OpenHouse.png') no-repeat 180px 17px #f37800;
+    background:url('../img/anuncie/img-OpenHouse.png') no-repeat 180px 17px #f33300;
 }
 .tituloThumb.Mailing{
-    background:url('../img/anuncie/img-Mailing.png') no-repeat 200px 24px #f37800;
+    background:url('../img/anuncie/img-Mailing.png') no-repeat 200px 24px #f33300;
     padding-top: 25px;
     height: 55px;
 }
 .tituloThumb.Midia{
-    background:url('../img/anuncie/img-Midia.png') no-repeat 180px 27px #f37800;
+    background:url('../img/anuncie/img-Midia.png') no-repeat 180px 27px #f33300;
 }
 .tituloThumb.Portais{
-    background:url('../img/anuncie/img-Portais.png') no-repeat 200px 27px #f37800;
+    background:url('../img/anuncie/img-Portais.png') no-repeat 200px 27px #f33300;
 }
 .descricaoThumb{
     color:#a1acbb;
@@ -21809,7 +21809,7 @@ body.home header.fixed h1 img{
             <li><img src="/media/images/anuncie-seu-imovel/01.jpg" alt=""></li>
         </ul>
     </div>
-    <h2 data-fixed="Coelho da Fonseca">Coelho da Fonseca</h2>
+    <h2 data-fixed="Plano Imóveis">Plano Imóveis</h2>
 </div>
 -->
 
@@ -21835,6 +21835,7 @@ body.home header.fixed h1 img{
   <p class="textoAnuncie" ><nobr>Este é um pré-cadastro. Ao preencher e enviar o formulário abaixo, em até 24 horas um consultor entrará em contato para melhor atender as suas</nobr> <nobr>necessidades. Todos os campos são de preenchimento obrigatório. </p>
   <div class="newForm">
     <form action="/valida-anuncie-seu-imovel" method="post" data-validate="true" name="anuncieSeuImovel">
+        <h1 style="margin-left:5%">Dados do Proprietário Anunciante </h1><br/><br/>
       <ul>
         <li class="nome">
           <label class="label" for="nome">Nome</label>
@@ -21852,6 +21853,7 @@ body.home header.fixed h1 img{
           <label class="label" for="telefone2">Telefone 2</label>
           <input type="text" data-required="true" data-mask="phone" name="telefone2" id="telefone2" value="" data-required="true" class="menor" />
         </li>
+        <h1 style="margin-left:6%">Dados do Imóvel a ser Anunciado</h1><br/>
         <li class="cep">
           <label class="label" for="cep">CEP</label>
           <input type="text" data-required="true" data-mask="cep" name="cep" id="cep" value="" data-required="true" class="menor" />
@@ -21872,19 +21874,14 @@ body.home header.fixed h1 img{
           <label class="label" for="cidade">Cidade</label>
           <input type="text" name="cidade" id="cidade" data-required="true" value="" readonly="readonly" />
         </li>
-        <li>
-          <label class="label" for="cidade">Tipo de Comercialização</label>
-          <input type="checkbox" name="comercializacao_venda" value="1">&nbsp;&nbsp;Venda
+        <li align="center">
+          <label class="label" for="cidade">Tipo de Comercialização</label><br/>
+          <input type="checkbox" name="comercializacao_venda" value="1" style="margin-left:3%">&nbsp;&nbsp;Venda
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input type="checkbox" name="comercializacao_locacao" value="1">&nbsp;&nbsp;Locação
         </li>
-        <li>
-          <label class="label" for="submit">&nbsp;</label>
-          <div class="g-recaptcha" data-size="500" data-sitekey="6Lcm4BATAAAAAKqMb9MP0Cl6AdDb1M-2ipU5e4VB" style="margin: 0 auto;width: 302px;"></div>
-                      </li>
         <li class="submit">
-          <label class="label" for="submit">&nbsp;</label>
-          <input type="submit" value="Enviar" />
+            <button type="button" class="" id="btn_pesquisar" onclick="search();" style="height: 43px;width: 100px;margin-left:40%">Buscar</button><br/><br/><br/>
         </li>
 
       </ul>
@@ -21899,21 +21896,21 @@ body.home header.fixed h1 img{
         Aguardando conversa com o cliente a respeito do texto -->
 
     <div class="container">
-        <h2 class="titulo">VEJA VANTAGENS DE ANUNCIAR SEU IMÓVEL NA COELHO DA FONSECA</h2>
+        <h2 class="titulo"><b>VEJA VANTAGENS DE ANUNCIAR SEU IMÓVEL NA PLANO IMÓVEIS</b></h2>
         <!-- <h2>Visibilidade</h2> -->
     </div> <!-- /container -->
 
-    <div class="thumbsGeral">
+    <div class="thumbsGeral" style="margin-left:30.5%">
 
         <div class="combosThumb">
             <p class="tituloThumb sites">
-                Site Coelho<br/> da Fonseca
+                Site Plano<br/> Imóveis
 <!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
             </p>
             <p class="descricaoThumb">
                 Prático, moderno, eficiente e rápido.<br/>
                 Além de apresentar os imóveis em<br/>
-                fotos e vídeos exclusivos, tudo foi<br/>
+                fotos, tudo foi<br/>
                 feito para você ter a melhor<br/>
                 experiência possível conosco!
             </p>
@@ -21928,8 +21925,6 @@ body.home header.fixed h1 img{
                 Presença nas redes sociais<br/>
                 Facebook, Instagram, Twitter, Google+<br/>
                 e canal exclusivo no Youtube.<br/>
-                Conheça em<br/>
-                <a href="https://www.youtube.com/user/coelhodafonseca" target="_blank">www.youtube.com/coelhodafonseca</a>
             </p>
         </div>
 
@@ -21944,20 +21939,6 @@ body.home header.fixed h1 img{
                 por meio do nosso exclusivo site<br/>
                 móvel e aplicativos para as<br/>
                 plataformas iOS (Apple) e Android.
-            </p>
-        </div>
-
-        <div class="combosThumb">
-            <p class="tituloThumb OpenHouse">
-                Open<br/>House
-<!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
-            </p>
-            <p class="descricaoThumb">
-                Um serviço pioneiro no Brasil, lançado<br/>
-                pela Coelho da Fonseca, que permite a<br/>
-                visitação de clientes e de profissionais<br/>
-                de vendas do mercado, para<br/>
-                conhecerem em detalhes o seu imóvel.
             </p>
         </div>
     </div>
@@ -21983,8 +21964,8 @@ body.home header.fixed h1 img{
             </p>
             <p class="descricaoThumb">
                 Seu imóvel será anunciado nos jornais<br/>
-                de maior circulação de São Paulo e<br/>
-                Alphaville onde somos um dos<br/>
+                de maior circulação de Brasília onde <br/>
+                somos um dos
                 maiores anunciantes.
             </p>
         </div>
@@ -22010,31 +21991,31 @@ body.home header.fixed h1 img{
 
 <div id="anunciar-exclusivamente">
 
-        <h2>Por que seu imóvel deve ter<br /> Contrato de Gestão de Comercialização <nobr>Coelho da Fonseca</nobr>?</h2>
+        <h2>Por que seu imóvel deve ter<br /> Contrato de Gestão de Comercialização <nobr>Plano Imóveis</nobr>?</h2>
 
         <div class="motivos" style="margin: 0 auto; width: 780px;">
             <div class="item">
-                <img src="/img/anuncie/profissionalismo.png" alt="" class="thumb">
+                <% include includes/medalha.ejs %>
                 <h4>Profissionalismo<br> e Experiência</h4>
                 <p>Você conta com todo<br/> know-how de uma das<br/> maiores e mais<br/> importantes imobiliárias<br/> full service do país.</p>
             </div>
             <div class="item">
-                <img src="/img/anuncie/investidores.png" alt="" class="thumb">
+                <% include includes/grafico.ejs %>
                 <h4>Investidores</h4>
-                <p>A <nobr>Coelho da Fonseca<br/> possui um banco de dados<br/> permanentemente<br/> atualizado, composto<br/> também por proprietários<br/> que possuem imóveis<br/> administrados.</p>
+                <p>A <nobr>Plano Imóveis<br/> possui um banco de dados<br/> permanentemente<br/> atualizado, composto<br/> também por proprietários<br/> que possuem imóveis<br/> administrados.</p>
             </div>
             <!-- <div class="item">
                 <img src="img/anuncie/itau.png" alt="" class="thumb">
                 <h4>Financiamento<br> Itaú</h4>
-                <p>A <nobr>Coelho da Fonseca</nobr> é<br/> correspondente bancário<br/> nacional e internacional do<br/> Banco Itaú. Isso permite um<br/> leque de facilidades para o<br/> cliente que deseja comprar<br/> seu imóvel financiado.</p>
+                <p>A <nobr>Plano Imóveis</nobr> é<br/> correspondente bancário<br/> nacional e internacional do<br/> Banco Itaú. Isso permite um<br/> leque de facilidades para o<br/> cliente que deseja comprar<br/> seu imóvel financiado.</p>
             </div> -->
             <div class="item">
-                <img src="/img/anuncie/documentacao.png" alt="" class="thumb">
+                <% include includes/prancheta.ejs %>
                 <h4>Documentação <br>sem custo</h4>
-                <p>No momento da assinatura<br/> do instrumento de venda e<br/> sem qualquer custo para o<br/> contratante, a Coelho da<br/> Fonseca providenciará as<br/> certidões referentes ao<br/> município e comarca da<br/> Capital.</p>
+                <p>No momento da assinatura<br/> do instrumento de venda e<br/> sem qualquer custo para o<br/> contratante, a Plano <br/> Imóveis providenciará as<br/> certidões referentes ao<br/> município e comarca da<br/> Capital.</p>
             </div>
             <div class="item noMar" style="width: 150px;">
-                <img src="/img/anuncie/seguranca.png" alt="" class="thumb">
+                <% include includes/cofre.ejs %>
                 <h4>Segurança e <br />Privacidade</h4>
                 <p>O agendamento de visitas ao<br/> seu imóvel será feito apenas<br/> pelo corretor associado e<br/> gerente responsáveis pelo<br/> atendimento. Você se sente<br/> muito mais seguro na hora<br/> de abrir as portas.</p>
             </div>
@@ -22042,7 +22023,7 @@ body.home header.fixed h1 img{
         </div> <!-- /motivos -->
 
     </div> <!-- /anunciar exclusivamente -->
-
+<% include includes/footer.ejs %>
 
 <style>
 .new-contact-bar-flutuante{
