@@ -12,6 +12,9 @@ move = (req, imovelId, callback) => {
             fs.copyFile(pathIn + files[0], pathOut + 'principal.jpg', () => {
                 if(err) callback(err)
             })
+            fs.copyFile(pathIn + files[0], pathOut + 'thumb.jpg', () => {
+                if(err) callback(err)
+            })
             for(let i = 0; i < files.length; i++) {
                 fs.copyFile(pathIn + files[i], pathOut + i + '.jpg', () => {
                     if(err) callback(err)
@@ -20,7 +23,6 @@ move = (req, imovelId, callback) => {
             gm(pathIn + 'principal.jpg')
             .resize('200', '200', '^')
             .gravity('Center')
-            .crop('200', '200')
             .write(pathOut + 'thumb.jpg', function (err) {
                 if (err) callback(err)
                 rimraf(pathIn, (err) => {

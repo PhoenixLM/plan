@@ -28,8 +28,16 @@
                                 <!-- CONTAINER -->
                                 <div class="container">
                                     <% include ../includes/fineuploader.ejs %>
+                                    
                                     <br>
+                                    <div id="map" style="height:400px; width:100%"></div>
+                                    <br>
+                                    <button class="btn btn-primary" onclick='saveData()'>Salvar Localização</button>
+                                    <br>                                
+
                                     <form action="/admin/imoveis/new" method="POST">
+                                        <input type="text" name="lat" id="lat" />
+                                        <input type="text" name="lng" id="lng" />
                                         <div class="form-group">
                                             <label for="titulo">Título Anuncio:</label>
                                             <input type="text" name="titulo" id="titulo" class="form-control">
@@ -162,7 +170,57 @@
     </div>
     <!-- END PAGE WRAPPER -->
 
-    <% include ../includes/scriptPainel.ejs %>
 
+    <script>
+
+    var map;
+    var marker;
+    var infowindow;
+    var messagewindow;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -15.793, lng: -47.882},
+        zoom: 12
+        });
+
+        infowindow = new google.maps.InfoWindow({
+            content: document.getElementById('form_save')
+        });
+
+        messagewindow = new google.maps.InfoWindow({
+            content: document.getElementById('message')
+        });
+
+        google.maps.event.addListener(map, "click", function(event) {
+            marker = new google.maps.Marker({
+                position: event.latLng,
+                map: map
+            });
+        });
+
+        google.maps.event.addListener(marker, "click", function() {
+            infowindow.open(map, marker);
+        });
+    }
+
+    function saveData() {
+        var latlng = marker.getPosition();
+        var lat = latlng.lat();
+        var lng = latlng.lng();
+
+        console.log(lat);
+        console.log(lng);
+
+        $('#lat').val(lat);
+        $('#lng').val(lng);
+    }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFA9Y13wAB1kmWV0iUNKXtmPJTZQYwFPg&callback=initMap">
+    </script>
+
+    <% include ../includes/scriptPainel.ejs %>
 </body>
 </html>

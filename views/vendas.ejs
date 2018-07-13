@@ -11,7 +11,6 @@
     var procedencia = 'null';
     function setProc(proc) {
         procedencia = proc;
-        console.log(procedencia);
     }
     function spawnCard(imovel,divResult) {
         function UrlExists(url) {
@@ -20,7 +19,7 @@
             http.send();
             return http.status != 404;
         }
-        var url = 'img/' + imovel._id + '/' + 'thumb.jpg'
+        var url = 'localhost:3001/img/' + imovel._id + '/' + 'thumb.jpg'
         if(!(UrlExists(url))) {
             url = 'img/default/thumb.jpg'
         }
@@ -73,7 +72,6 @@
         $('#searchResults').empty();
         $.getJSON('/search/vendas/' + procedencia + '&' + tipo + '&' + bairro + '&' + valorMin + '&' + valorMax, function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i],'#searchResults');
             }
         });
@@ -82,7 +80,6 @@
         $('#searchResults').empty();
         $.getJSON('/search/vendas/all', function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i],'#searchResults');
             }
         });
@@ -91,7 +88,6 @@
         $('#destaquesResults').empty();
         $.getJSON('/search/vendas/destaques', function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
                 spawnCard(jq[i],'#destaquesResults');
             }
         });
