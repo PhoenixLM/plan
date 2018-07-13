@@ -194,12 +194,12 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-9 title-alugueis">
-                            <h2><span class="title">Alugueis</span></h2>
+                            <h2><span class="title">Locação</span></h2>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="span-gray">
-                            Faça sua busca de aluguel
+                            Faça aqui sua opção de locação
                         </div>
                     </div>
                 </div>
@@ -207,12 +207,11 @@
             <!--END HEADER-->
 
 
-            <div class="row" id="menu" >
+            <div class="row" id="menu" style="border:none">
           
-              
+                <a href="/alugueisr" class="btn" style="position:absolute;width:15%;background:linear-gradient(to bottom, transparent , #ffa621 ,transparent);color:#000!important;"><b>Imóveis</b><br/><b>Residenciais</b></a>
      
-                    <div class="col-2" style="margin-left:20%;margin-top:1%"    >
-                        
+                    <div class="col-2" style="margin-left:20%;margin-top:1%">
                         <select name="tipo" class="form-control" id="select_tipo" width="30px">
                             <option value="null" selected>Tipo de Imóvel</option>
                             <option value="apartamento">Apartamento</option>
@@ -234,7 +233,7 @@
                             <option value="outros">Outros</option>
                         </select>
                     </div>
-                    <div class="col-2"  style="margin-top:1%" >
+                    <div class="col-2" style="margin-top:1%">
                         <select name="bairro" class="form-control" id="select_bairro">
                             <option value="null" selected>Bairro</option>
                             <option value="aguas claras">Aguas Claras</option>
@@ -267,11 +266,19 @@
                             <option value="zona industrial">Zona Industrial</option>
                         </select>
                     </div>
-                    <div class="col-2" > 
-                        <input type="number" class="form-control" id="number_preco" placeholder="Valor" style="margin-top:6.5%" >   
+                    <div class="col-2" style="margin-top:1%"> 
+                        <input type="number" class="form-control" id="number_preco" placeholder="Valor">
+                        
                     </div>
                     <div class="col-1">
                         <button type="button" class="" id="btn_pesquisar" onclick="search();" style="height: 40px;width:140px;">Buscar</button><br/><br/><br/>
+                    </div>
+                    <br/>
+                    
+                </div>
+                <div class="row justify-content-center" style="margin-left:8%">
+                    <div class="span-gray">
+                        Buscador integrado com Google Maps
                     </div>
                 </div>
                 
@@ -284,7 +291,7 @@
         <!--END BARRA BRANCA-->
             
 
-            <div class="row" id="conteudo">
+            <div class="row" id="conteudo" style="border:none">
                 <div class="col-12">
                     <h1 align="center">Destaques de alugueis</h1>
                 </div>

@@ -83,9 +83,17 @@ const imovelSchema = new Schema({
         type: String,
         required: false
     },
-    titulo:{
+    titulo: {
         type: String,
         required: true
+    },
+    lat: {
+        type: Number,
+        required: false
+    },
+    lng: {
+        type: Number,
+        required: false
     }
 
 })

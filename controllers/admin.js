@@ -65,6 +65,7 @@ module.exports = (app) => {
 
     app.post('/admin/imoveis/new', (req, res, next) => {
         let imovel = new Imovel(req.body)
+        console.log(req.body)
         imovel.save((err) => {
             if(err) return next(err)
             moveFrom(req, imovel._id, (err) => {

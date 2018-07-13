@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <% include ./includes/header.ejs %>
     <link rel="stylesheet" href="/css/stylesheet.css">
-    <title>Alugar</title>
+    <title>Anunciar Imóvel</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -184,7 +184,408 @@
 	}
 
 
-/*COMBOS THUMB*/
+
+
+    /*
+    Colorbox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxWrapper {max-width:none;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+#cboxTitle{padding-left : 15px;background : #FFFFFF;color : #5f5f5f;font-family: 'DIN Next W02 Bold';font-size: 16px;position:absolute; top:-27px; left:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+.cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of Colorbox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay{background:#fff; opacity: 0.9; filter: alpha(opacity = 90);}
+#colorbox{outline:0;background-color: #fff;box-shadow : 2px 0 8px #717171;}
+    #cboxContent{margin-top:32px; overflow:visible; background:#000;}
+        .cboxIframe{background:#fff;}
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{background:#000; padding:1px;}
+        #cboxLoadingGraphic{background:url(/img/colorbox/loading.gif) no-repeat center center;}
+        #cboxLoadingOverlay{background:#000;}
+        
+        #cboxCurrent{position:absolute; top:-22px; right:205px; text-indent:-9999px;}
+
+        /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+        #cboxPrevious, #cboxNext, #cboxSlideshow{border:0; padding:0; margin:0; overflow:visible; text-indent:-9999px; width:20px; height:20px; position:absolute; top:-20px; background:url(/img/colorbox/controls.png) no-repeat 0 0;}
+        
+         #cboxClose {border:0; padding:0; margin:0; overflow:visible; text-indent:-9999px; width:25px; height:25px; position:absolute; top:-29px; background:url(/img/bt-fechar-lightbox-small.png) no-repeat 0 0; right: 5px;-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75); filter: alpha(opacity=75); -khtml-opacity: 0.75;-moz-opacity: 0.75;opacity: 0.75;}
+         
+         #cboxClose:hover {
+         	-moz-transition: all 0.1s ease-out;
+			-webkit-transition: all 0.1s ease-out;
+			-o-transition: all 0.1s ease-out;
+			transition: all 0.1s ease-out;
+			-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+			filter: alpha(opacity=100);
+			-khtml-opacity: 1;
+			-moz-opacity: 1;
+			opacity: 1;
+		}
+        
+        /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+        #cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {outline:0;}
+
+        #cboxPrevious{background-position:0px 0px; right:44px;}
+        #cboxPrevious:hover{background-position:0px -25px;}
+        #cboxNext{background-position:-25px 0px; right:22px;}
+        #cboxNext:hover{background-position:-25px -25px;}
+        
+        
+        .cboxSlideshow_on #cboxPrevious, .cboxSlideshow_off #cboxPrevious{right:66px;}
+        .cboxSlideshow_on #cboxSlideshow{background-position:-75px -25px; right:44px;}
+        .cboxSlideshow_on #cboxSlideshow:hover{background-position:-100px -25px;}
+        .cboxSlideshow_off #cboxSlideshow{background-position:-100px 0px; right:44px;}
+        .cboxSlideshow_off #cboxSlideshow:hover{background-position:-75px -25px;}
+
+
+
+
+        /** Avalia��o Express **/
+
+.avaliacao-express .ico{
+    background-image: url(../images/sprite-avaliacao.png);
+}
+
+.avaliacao-express .ico.ico-certificado{
+    width: 59px;
+    height: 70px;
+    background-position: -3px -10px;
+    margin: 0 auto;
+}
+
+.avaliacao-express .ico.ico-certificado a{
+    width: 59px;
+    height: 70px;
+    display: block;
+}
+
+.avaliacao-express .ico.ico-vistoria a{
+    width: 68px;
+    height: 66px;
+    display: block;
+}
+
+.avaliacao-express .ico.ico-vistoria{
+    width: 68px;
+    height: 66px;
+    background-position: -61px -10px;
+    margin: 0 auto;
+}
+
+.avaliacao-express p.destaque{
+    color: #848484;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 70px
+}
+
+.avaliacao-express .vitrine h3,
+.avaliacao-express .vitrine p{
+    text-align: center
+}
+
+.avaliacao-express .vitrine h3{
+    color: #3d4f66;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 40px 0 25px 0;
+
+}
+
+.avaliacao-express .vitrine p{
+    color: #848484;
+    font-size: 16px;
+}
+
+.avaliacao-express .vitrine{
+    width: 926px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.divide-avaliacao{
+  position: absolute;
+  left: 507px;
+}
+
+.avaliacao-express .vitrine .col-a{
+    float: left;
+    width: 467px;
+}
+
+.avaliacao-express .vitrine .col-b{
+    float: right;
+    width: 362px;
+}
+
+.avaliacao-express .rodape{
+    color: #848484;
+    text-align: center;
+    margin-bottom: 115px
+}
+
+.avaliacao-express .rodape a{
+    text-transform: uppercase;
+    color: #f86d23;
+}
+
+.avaliacao-express .nav-tabs {
+  position: relative;
+  width: 710px;
+  margin: 65px auto 70px auto;
+  border-bottom: 1px solid #7a7e84;
+  text-align: center;
+}
+.avaliacao-express .nav-tabs li {
+  display: inline-block;
+  padding: 0 35px;
+}
+.avaliacao-express .nav-tabs li:first-child {
+  padding-left: 0;
+}
+.avaliacao-express .nav-tabs li:last-child {
+  padding-right: 0;
+}
+.avaliacao-express .nav-tabs a {
+  display: inline-block;
+  padding: 20px 0;
+  text-transform: uppercase;
+  color: #c4c4c4;
+  font-size: 16px;
+  font-family: 'DIN Next W02 Bold';
+  -moz-transition: color 0.2s ease-out;
+  -webkit-transition: color 0.2s ease-out;
+  -o-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+}
+.avaliacao-express .nav-tabs a.active,
+.avaliacao-express .nav-tabs a:hover {
+  color: #5f5f5f;
+}
+.avaliacao-express .nav-tabs .seta {
+  display: block;
+  position: absolute;
+  bottom: -7px;
+  left: -13px;
+  width: 13px;
+  height: 7px;
+  overflow: hidden;
+  background: url('../img/seta-bottom-navtab.png') no-repeat;
+  text-indent: -9999em;
+  margin-left: -7px;
+}
+
+.avaliacao-express .perguntas-frequentes{
+    width: 1002px;
+    margin: 0 auto;
+    margin-bottom: 115px;
+}
+
+.avaliacao-express .perguntas-frequentes .pergunta{
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.avaliacao-express .perguntas-frequentes .pergunta h3{
+    color: #3d4f66;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #afb7c2;
+    width: 964px;
+    cursor: pointer;
+}
+
+.avaliacao-express .perguntas-frequentes .pergunta p{
+    color: #848484;
+    font-size: 14px;
+    padding-top: 15px;
+    display: none;
+}
+
+.avaliacao-express .perguntas-frequentes .pergunta p.visible{
+    display: block;
+}
+
+.avaliacao-express .perguntas-frequentes .pergunta .ico-pergunta{
+    width: 26px;
+    height: 27px;
+    background-position: -130px -10px;
+    position: absolute;
+    right: 9px;
+    top: 15px;
+    cursor: pointer;
+}
+
+.avaliacao-express .formulario{
+    width: 715px;
+    margin: 0 auto;
+}
+
+.avaliacao-express .formulario .grande{
+    width: 328px;
+    height: 27px;
+    background-position: -154px -6px;
+    padding-left: 10px;
+}
+
+.avaliacao-express .formulario .menor{
+    width: 280px;
+    height: 27px;
+    background-position: -154px -36px;
+    padding-left: 10px;
+}
+
+.avaliacao-express .formulario .micro{
+    width: 34px;
+    height: 27px;
+    background-position: -153px -65px;
+    padding-left: 10px;
+}
+
+.avaliacao-express .formulario .linha{
+    position: relative;
+}
+
+.avaliacao-express .label_check,
+.avaliacao-express .label_radio    { padding-left: 23px }
+.avaliacao-express .label_radio    { background: url(../images/radio-desligado.png) 5px no-repeat; }
+.avaliacao-express .label_check    { background: url(../images/radio-desligado.png) 5px no-repeat; }
+.avaliacao-express label.c_on      { background: url(../images/radio-ligado.png) 5px no-repeat; }
+.avaliacao-express label.r_on      { background: url(../images/radio-ligado.png) 5px no-repeat; }
+.avaliacao-express .label_check input,
+.avaliacao-express .label_radio input  { position: absolute; left: -9999px; }
+
+
+.file-wrapper {
+  /*cursor: pointer;
+  display: inline-block;*/
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  /*margin-left: 165px;*/
+}
+.file-wrapper input {
+  cursor: pointer;
+  font-size: 100px;
+  height: 100%;
+  filter: alpha(opacity=1);
+  -moz-opacity: 0.01;
+  opacity: 0.01;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.file-wrapper .button {
+  background: #fb9430;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+  padding: 4px 18px;
+  text-transform: uppercase;
+  font-family: 'DIN Next W02 Bold';
+}
+
+.file-wrapper .file-holder{
+    font-family: 'DIN Next W02 Bold';
+    display: block;   
+}
+
+
+.avaliacao-express .extra{
+    position: absolute;
+    right: 75px;
+    top: 4px;
+}
+
+.avaliacao-express .extra .numero{
+    font-family: 'DIN Next W02 Regular';
+    color: #f9b24c;
+    font-size: 13px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #f9b24c;
+}
+
+.avaliacao-express .extra .upload{
+    font-family: 'DIN Next W02 Regular';
+    color: #828f9f;
+    font-size: 13px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #828f9f;
+}
+
+.avaliacao-express .submit{
+display: block;
+width: 167px;
+height: 43px;
+text-align: center;
+font-family: 'DIN Next W02 Bold';
+font-size: 18px;
+text-transform: uppercase;
+color: #fff;
+background: url('../img/bt_login.png') no-repeat;
+padding-bottom: 6px;
+margin: 0 auto;
+margin-top: 50px;
+}
+
+.avaliacao-express .erro{
+  display: block;
+  color: #FF0000;
+  font-size: 11px;
+  margin-left: 140px;
+  color: #FFF;
+}
+
+.avaliacao-express .box-featured{
+  height: 249px;
+  background: url('../images/header-avaliacao-express.jpg') no-repeat center #c1c8ce;
+}
+
+.so_cnpj{
+  display: none;
+}
+
+.f-nav{
+  z-index: 3000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #FFF;
+  height: 70px;
+  margin-top: 80px;
+  overflow: hidden;
+}
+
+.avaliacao-express .f-nav .nav-tabs {
+  margin-top: 0px;
+}
+
+
+
+
 
 /*@import url("http://fast.fonts.com/t/1.css?apiType=css&projectid=3a29f6e1-f9e2-413b-91ac-e4c7ed09871a");*/
 /*! normalize.css v1.1.0 | MIT License | git.io/normalize */
@@ -9984,7 +10385,7 @@ html.lightboxContent body {
 }
 .tituloThumb{
     height:70px;
-    /* background-color:#dc3232; */
+    /* background-color:#f37800; */
     color:#fff;
     font-family: 'DIN Next W02 Black';
     text-transform: uppercase;
@@ -9992,37 +10393,37 @@ html.lightboxContent body {
     line-height: 30px;
     padding-left: 20px;
     padding-top: 10px;
-    /* background:url('../img/anuncie/img-Site.png') no-repeat 200px 35px #dc3232; */
+    /* background:url('../img/anuncie/img-Site.png') no-repeat 200px 35px #f37800; */
     /* background-repeat: no-repeat;
     background-position: 200px 35px; */
 }
 .tituloThumb.sites{
-    background:url('../img/anuncie/img-Site.png') no-repeat 200px 27px #dc3232;
+    background:url('../img/anuncie/img-Site.png') no-repeat 200px 27px #f37800;
 }
 .tituloThumb.redesSociais{
-    background:url('../img/anuncie/img-RedesSociais.png') no-repeat 180px 27px #dc3232;
+    background:url('../img/anuncie/img-RedesSociais.png') no-repeat 180px 27px #f37800;
 }
 .tituloThumb.Mobile{
-    background:url('../img/anuncie/img-Mobile.png') no-repeat 153px 24px #dc3232;
+    background:url('../img/anuncie/img-Mobile.png') no-repeat 153px 24px #f37800;
     padding-top: 25px;
     height: 55px;
 }
 .tituloThumb.Email{
-    background:url('../img/anuncie/img-Email.png') no-repeat 184px 27px #dc3232;
+    background:url('../img/anuncie/img-Email.png') no-repeat 184px 27px #f37800;
 }
 .tituloThumb.OpenHouse{
-    background:url('../img/anuncie/img-OpenHouse.png') no-repeat 180px 17px #dc3232;
+    background:url('../img/anuncie/img-OpenHouse.png') no-repeat 180px 17px #f37800;
 }
 .tituloThumb.Mailing{
-    background:url('../img/anuncie/img-Mailing.png') no-repeat 200px 24px #dc3232;
+    background:url('../img/anuncie/img-Mailing.png') no-repeat 200px 24px #f37800;
     padding-top: 25px;
     height: 55px;
 }
 .tituloThumb.Midia{
-    background:url('../img/anuncie/img-Midia.png') no-repeat 180px 27px #dc3232;
+    background:url('../img/anuncie/img-Midia.png') no-repeat 180px 27px #f37800;
 }
 .tituloThumb.Portais{
-    background:url('../img/anuncie/img-Portais.png') no-repeat 200px 27px #dc3232;
+    background:url('../img/anuncie/img-Portais.png') no-repeat 200px 27px #f37800;
 }
 .descricaoThumb{
     color:#a1acbb;
@@ -21129,8 +21530,6 @@ body.home header.fixed h1 img{
     height: 40px;
     left: 183px;
 }
-
-
 </style>
 <body>
 
@@ -21168,157 +21567,641 @@ body.home header.fixed h1 img{
                 </div>
             </div>
             <!--END HEADER-->
-            <div class="container" style="margin-left:40%">
-                    <div class="col-md-5">
-                        <div class="form-area">  
-                                <form action="/admin/imoveis/new" method="POST">
-                            <br style="clear:both">
-                                        <h3 style="margin-bottom: 25px; text-align:center;">Anuncie seu imóvel</h3>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="numero1" name="numero1" placeholder="Telefone para contato" required>
-                                        </div>
-                                        <div class="form-group">
-                                                <input type="text" class="form-control" id="numero2" name="numero2" placeholder="Telefone Celular" required>
-                                            </div>
-                                        <div class="form-group">
-                                                <input type="text" class="form-control" id="CEP" name="CEP" placeholder="CEP" required>
-                                        </div>
-                                        <div class="form-group">
-                                                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço" required>
-                                        </div>
-                                        <div class="form-group">
-                                                <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" required>
-                                        </div>
-                                        <div class="form-group">
-                                                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" required>
-                                        </div>
-                                        <div class="form-group">
-                                                <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" required>
-                                        </div>
-                                        <div class="form-group">
-                                                <label>Tipo de Comercialização</label>
-                                                <br>
-                                                <div class="form-check-inline">
-                                                    <label><input type="radio" name="isLocacao" id="isLocacao" value="false">Venda</label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <label><input type="radio" name="isLocacao" id="isLocacao" value="true">Locação</label>
-                                                </div>
-                                    </div>
+          
+</div>
+</div>
+<head>
+<style type="text/css">
+    .newForm{
+      width: 500px;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
 
-                                
-                            <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Enviar</button>
-                            </form>
-                        </div>
-                    </div>
-                    </div>
-                    <div id="visibilidade" class="gradientBg">
+    .g-recaptcha{
+      display: inline-block;
+    }
 
-                            <!-- TODO deixar as caixas todas do mesmo tamanho
-                                Aguardando conversa com o cliente a respeito do texto -->
-                    
-                            <div class="container">
-                                <br/> <br/>
-                                <h2 style="color:white" align="center">VEJA VANTAGENS DE ANUNCIAR SEU IMÓVEL NA PLANO IMÓVEIS</h2>
-                                <!-- <h2>Visibilidade</h2> -->
-                            </div> <!-- /container -->
-                    
-                            <div class="thumbsGeral">
-                    
-                                <div class="combosThumb" style="margin-left:13%">
-                                    <p class="tituloThumb sites">
-                                        Site Plano<br/> Imóveis
-                        <!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
-                                    </p>
-                                    <p class="descricaoThumb">
-                                        Prático, moderno, eficiente e rápido.<br/>
-                                        Além de apresentar os imóveis em<br/>
-                                        fotos e vídeos exclusivos, tudo foi<br/>
-                                        feito para você ter a melhor<br/>
-                                        experiência possível conosco!
-                                    </p>
-                                </div>
-                    
-                                <div class="combosThumb">
-                                    <p class="tituloThumb redesSociais">
-                                        Redes<br/> Sociais
-                        <!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
-                                    </p>
-                                    <p class="descricaoThumb">
-                                        Presença nas redes sociais<br/>
-                                        Facebook, Instagram, Twitter, Google+<br/>
-                                        e canal exclusivo no Youtube.<br/>
-                                
-                                    </p>
-                                </div>
-                    
-                                <div class="combosThumb">
-                                    <p class="tituloThumb Mobile">
-                                        Celular
-                        <!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
-                                    </p>
-                                    <p class="descricaoThumb">
-                                        Todos os detalhes do seu imóvel<br/>
-                                        disponíveis nas mãos dos clientes<br/>
-                                        por meio do nosso exclusivo site<br/>
-                                        móvel e aplicativos para as<br/>
-                                        plataformas iOS (Apple) e Android.
-                                    </p>
-                                </div>
-                    
-                                
-                            </div>
-                            <div class="thumbsGeral" style="width: 740px;overflow: hidden;">
-                                <div class="combosThumb">
-                                    <p class="tituloThumb Mailing">
-                                        Mailing
-                        <!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
-                                    </p>
-                                    <p class="descricaoThumb">
-                                        Seu imóvel será divulgado para<br/>
-                                        um dos mailings mais<br/>
-                                        completos do mercado,<br/>
-                                        composto de um público<br/>
-                                        específico e selecionado.
-                                    </p>
-                                </div>
-                    
-                                <div class="combosThumb">
-                                    <p class="tituloThumb Midia">
-                                        Destaque<br/>na Mídia
-                        <!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
-                                    </p>
-                                    <p class="descricaoThumb">
-                                        Seu imóvel será anunciado nos jornais<br/>
-                                        de maior circulação de Brasília<br/>
-                                        onde somos um dos<br/>
-                                        maiores anunciantes.
-                                    </p>
-                                </div>
-                    
-                                <div class="combosThumb" style="margin-right: 0px;">
-                                    <p class="tituloThumb Portais">
-                                        Portais<br/>Imobiliários
-                        <!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
-                                    </p>
-                                    <p class="descricaoThumb">
-                                        Seu imóvel poderá ser anunciado em<br/>
-                                        diversos portais imobiliários<br/>
-                                        parceiros, aumentando a chance de<br/>
-                                        comercialização.
-                                    </p>
-                                </div>
-                    
-                            </div>
-                    
-                        </div> <!-- /visibilidade -->
-                        <div id="anunciar-exclusivamente">
+    .newForm input[type="text"],
+    .newForm input[type="email"]{
+      width: 209px;
+      box-shadow: inset #c6c6c6 0px 1px 0px;
+      border: 1px solid #c4c4c4;
+      height: 17px;
+      min-height: 13px;
+      max-height: 20px;
+      padding: 5px;
+      width: 300px;
+      border-radius: 5px;
+      background: #e4e4e4;
+    }
+
+    .newForm input[type="text"].menor,
+    .newForm input[type="email"].menor{
+      width: 150px !important;
+    }
+
+    .newForm input[type="submit"]{
+      background: url("/img/bt_submit.png") no-repeat top left;
+      width: 203px;
+      height: 48px;
+      padding: 0;
+      font-family: 'DIN Next W02 Bold';
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #ffffff;
+      padding-bottom: 5px;
+      margin-left: -40px;
+    }
+
+    .newForm label{
+      font-family: 'DIN Next W02 Bold';
+      font-size: 15px;
+      color: #525669;
+      display: inline-block;
+      text-align: right;
+      width: 156px;
+      padding-right: 15px;
+    }
+
+    .newForm li{
+      margin-bottom: 15px;
+    }
+
+    .newForm li.submit{
+      text-align: center;
+    }
+
+    input[type="text"][readonly='readonly'], select[disabled][readonly='readonly']
+    {
+        opacity: 0.5;
+    }
+    .loadingSearchAddress {
+        margin-left: 8px;
+    }
+    .area-anuncie #anuncie form fieldset > div > ul > li input[type=password] {
+        border-radius: 3px 3px 3px 3px;
+        -moz-border-radius: 3px 3px 3px 3px;
+        -webkit-border-radius: 3px 3px 3px 3px;
+        font-size: 14px;
+        color: #5F5F5F;
+        border: 1px solid #c4c4c4;
+        background: #e4e4e4;
+        width: 368px;
+        min-width: 368px;
+        max-width: 368px;
+        height: 25px;
+        min-height: 25px;
+        max-height: 25px;
+        padding: 0;
+        padding: 0 5px;
+    }
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro ul li {
+      padding: 0px 0;
+    }
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro ul li .label {
+      width: 110px;
+      padding-left: 24px;
+      padding-right: 0px;
+    }
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro ul li.novidades label {
+      margin-left: 10px;
+    }
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro ul > li.nome input,
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro ul > li.sobrenome input,
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro ul > li.senha input,
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro ul > li.email input {
+      width: 377px;
+      max-width: 377px;
+    }
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro > div > ul > li.telefone-2 .label,
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro > div > ul > li.profissao .label,
+    .area-anuncie.area-logado #content .cnt-pre-cadastro form fieldset#cadastro > div > ul > li.cpf .label {
+        width: 62px;
+    }
+    .area-anuncie.area-logado #content {
+        width: 100%;
+        float: none;
+    }
+    .area-anuncie #anuncie form fieldset {
+        /* width: 713px; */
+    }
+    .area-logado #content .cnt-pre-cadastro form fieldset.complete-cadastro {
+        display: none;
+    }
+    .area-logado #content .cnt-pre-cadastro form fieldset.complete-cadastro ul li {
+        padding: 0px;
+    }
+    .area-logado #content .cnt-pre-cadastro form fieldset.complete-cadastro ul .label-checkbox input {
+        vertical-align: text-bottom;
+        margin-right: 5px;
+    }
+            
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+ .jspContainer {
+	overflow: hidden;
+	position: relative;
+	width: 100% !important;
+}
+
+.jspPane {
+	position: absolute;
+}
+
+.jspVerticalBar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	/* width: 16px; */
+	width: 26px;
+	height: 100%;
+	/* background: red; */
+}
+
+.jspHorizontalBar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: red;
+}
+
+.jspCap {
+	display: none;
+}
+
+.jspHorizontalBar .jspCap {
+	float: left;
+}
+
+.jspTrack {
+	/* background: #dde; */
+	background: transparent url('../img/header/scroll-bg.png') 0 0 repeat-y;
+	position: relative;
+}
+
+.jspDrag {
+	/* background: #bbd; */
+	background: transparent url('../img/header/scroll-bar.png') top right no-repeat;
+	position: relative;
+	top: 0;
+	left: -2px;
+	cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,.jspHorizontalBar .jspDrag {
+	float: left;
+	height: 100%;
+}
+
+.jspArrow {
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+}
+
+.jspArrow.jspDisabled {
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow {
+	height: 16px;
+}
+
+
+.jspHorizontalBar .jspArrow {
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus {
+	outline: none;
+}
+
+.jspCorner {
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner {
+	margin: 0 -3px 0 0;
+}
+</style>
+</head>
+<div id="wrapper" class="area-anuncie area-logado area-corretor">
+
+<!-- <div class="box-featured">
+    <div class="carrocel">
+        <ul class="carrocelImages">
+            <li><img src="/media/images/anuncie-seu-imovel/01.jpg" alt=""></li>
+        </ul>
+    </div>
+    <h2 data-fixed="Coelho da Fonseca">Coelho da Fonseca</h2>
+</div>
+-->
+
+<div class="container menuAnuncie-fix" id="container">
+
+    <div class="nav-tabs">
+        <ul>
+            <li><a href="#anuncie" class="bt3 active">Anuncie seu imóvel</a></li>
+            <li><a href="#visibilidade" class="bt1">Visibilidade</a></li>
+            <li><a href="#anunciar-exclusivamente" class="bt2 ">Por que anunciar conosco?</a></li>
+        </ul>
+        <span class="seta"></span>
+        <div class="clear"></div>
+    </div> <!-- /nav-tabs -->
+
+
+
+</div> <!-- /container -->
+
+<div id="anuncie" class="gradientBg" name="anuncie">
+    <div id="content" class="container">
+  <h2>Cadastre o seu imóvel para Venda ou Locação.</h2>
+  <p class="textoAnuncie" ><nobr>Este é um pré-cadastro. Ao preencher e enviar o formulário abaixo, em até 24 horas um consultor entrará em contato para melhor atender as suas</nobr> <nobr>necessidades. Todos os campos são de preenchimento obrigatório. </p>
+  <div class="newForm">
+    <form action="/valida-anuncie-seu-imovel" method="post" data-validate="true" name="anuncieSeuImovel">
+      <ul>
+        <li class="nome">
+          <label class="label" for="nome">Nome</label>
+          <input type="text" data-required="true" name="nome" id="nome" data-required="true" value="" />
+        </li>
+        <li class="email">
+          <label class="label" for="email">E-mail</label>
+          <input type="text" data-required="true" name="email" id="email" data-required="true" value="" />
+        </li>
+        <li class="telefone1">
+          <label class="label" for="telefone1">Telefone 1</label>
+          <input type="text" data-required="true" data-mask="phone" name="telefone1" id="telefone1"  value="" data-required="true" class="menor" />
+        </li>
+        <li class="telefone2">
+          <label class="label" for="telefone2">Telefone 2</label>
+          <input type="text" data-required="true" data-mask="phone" name="telefone2" id="telefone2" value="" data-required="true" class="menor" />
+        </li>
+        <li class="cep">
+          <label class="label" for="cep">CEP</label>
+          <input type="text" data-required="true" data-mask="cep" name="cep" id="cep" value="" data-required="true" class="menor" />
+        </li>
+        <li class="endereco">
+          <label class="label" for="endereco">Endereço</label>
+          <input type="text" data-required="true" name="endereco" id="endereco" value="" data-required="true" readonly="readonly" />
+        </li>
+        <li class="numero">
+          <label class="label" for="numero">Número</label>
+          <input type="text" name="numero" id="numero" data-required="true" value="" class="menor" />
+        </li>
+        <li class="bairro">
+          <label class="label" for="bairro">Bairro</label>
+          <input type="text" data-required="true" name="bairro" id="bairro" value="" data-required="true" readonly="readonly" />
+        </li>
+        <li class="cidade">
+          <label class="label" for="cidade">Cidade</label>
+          <input type="text" name="cidade" id="cidade" data-required="true" value="" readonly="readonly" />
+        </li>
+        <li>
+          <label class="label" for="cidade">Tipo de Comercialização</label>
+          <input type="checkbox" name="comercializacao_venda" value="1">&nbsp;&nbsp;Venda
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="checkbox" name="comercializacao_locacao" value="1">&nbsp;&nbsp;Locação
+        </li>
+        <li>
+          <label class="label" for="submit">&nbsp;</label>
+          <div class="g-recaptcha" data-size="500" data-sitekey="6Lcm4BATAAAAAKqMb9MP0Cl6AdDb1M-2ipU5e4VB" style="margin: 0 auto;width: 302px;"></div>
+                      </li>
+        <li class="submit">
+          <label class="label" for="submit">&nbsp;</label>
+          <input type="submit" value="Enviar" />
+        </li>
+
+      </ul>
+    </form>
+  </div>
+</div> <!-- /container -->
+</div> <!-- /visibilidade -->
+
+<div id="visibilidade" class="gradientBg">
+
+    <!-- TODO deixar as caixas todas do mesmo tamanho
+        Aguardando conversa com o cliente a respeito do texto -->
+
+    <div class="container">
+        <h2 class="titulo">VEJA VANTAGENS DE ANUNCIAR SEU IMÓVEL NA COELHO DA FONSECA</h2>
+        <!-- <h2>Visibilidade</h2> -->
+    </div> <!-- /container -->
+
+    <div class="thumbsGeral">
+
+        <div class="combosThumb">
+            <p class="tituloThumb sites">
+                Site Coelho<br/> da Fonseca
+<!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
+            </p>
+            <p class="descricaoThumb">
+                Prático, moderno, eficiente e rápido.<br/>
+                Além de apresentar os imóveis em<br/>
+                fotos e vídeos exclusivos, tudo foi<br/>
+                feito para você ter a melhor<br/>
+                experiência possível conosco!
+            </p>
+        </div>
+
+        <div class="combosThumb">
+            <p class="tituloThumb redesSociais">
+                Redes<br/> Sociais
+<!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
+            </p>
+            <p class="descricaoThumb">
+                Presença nas redes sociais<br/>
+                Facebook, Instagram, Twitter, Google+<br/>
+                e canal exclusivo no Youtube.<br/>
+                Conheça em<br/>
+                <a href="https://www.youtube.com/user/coelhodafonseca" target="_blank">www.youtube.com/coelhodafonseca</a>
+            </p>
+        </div>
+
+        <div class="combosThumb">
+            <p class="tituloThumb Mobile">
+                Celular
+<!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
+            </p>
+            <p class="descricaoThumb">
+                Todos os detalhes do seu imóvel<br/>
+                disponíveis nas mãos dos clientes<br/>
+                por meio do nosso exclusivo site<br/>
+                móvel e aplicativos para as<br/>
+                plataformas iOS (Apple) e Android.
+            </p>
+        </div>
+
+        <div class="combosThumb">
+            <p class="tituloThumb OpenHouse">
+                Open<br/>House
+<!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
+            </p>
+            <p class="descricaoThumb">
+                Um serviço pioneiro no Brasil, lançado<br/>
+                pela Coelho da Fonseca, que permite a<br/>
+                visitação de clientes e de profissionais<br/>
+                de vendas do mercado, para<br/>
+                conhecerem em detalhes o seu imóvel.
+            </p>
+        </div>
+    </div>
+    <div class="thumbsGeral" style="width: 740px;overflow: hidden;">
+        <div class="combosThumb">
+            <p class="tituloThumb Mailing">
+                Mailing
+<!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
+            </p>
+            <p class="descricaoThumb">
+                Seu imóvel será divulgado para<br/>
+                um dos mailings mais<br/>
+                completos do mercado,<br/>
+                composto de um público<br/>
+                específico e selecionado.
+            </p>
+        </div>
+
+        <div class="combosThumb">
+            <p class="tituloThumb Midia">
+                Destaque<br/>na Mídia
+<!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
+            </p>
+            <p class="descricaoThumb">
+                Seu imóvel será anunciado nos jornais<br/>
+                de maior circulação de São Paulo e<br/>
+                Alphaville onde somos um dos<br/>
+                maiores anunciantes.
+            </p>
+        </div>
+
+        <div class="combosThumb" style="margin-right: 0px;">
+            <p class="tituloThumb Portais">
+                Portais<br/>Imobiliários
+<!--                    <img src="img/anuncie/img-Site.png" alt=""> -->
+            </p>
+            <p class="descricaoThumb">
+                Seu imóvel poderá ser anunciado em<br/>
+                diversos portais imobiliários<br/>
+                parceiros, aumentando a chance de<br/>
+                comercialização.
+            </p>
+        </div>
+
+    </div>
+
+</div> <!-- /visibilidade -->
+
+
+
+<div id="anunciar-exclusivamente">
+
+        <h2>Por que seu imóvel deve ter<br /> Contrato de Gestão de Comercialização <nobr>Coelho da Fonseca</nobr>?</h2>
+
+        <div class="motivos" style="margin: 0 auto; width: 780px;">
+            <div class="item">
+                <img src="/img/anuncie/profissionalismo.png" alt="" class="thumb">
+                <h4>Profissionalismo<br> e Experiência</h4>
+                <p>Você conta com todo<br/> know-how de uma das<br/> maiores e mais<br/> importantes imobiliárias<br/> full service do país.</p>
+            </div>
+            <div class="item">
+                <img src="/img/anuncie/investidores.png" alt="" class="thumb">
+                <h4>Investidores</h4>
+                <p>A <nobr>Coelho da Fonseca<br/> possui um banco de dados<br/> permanentemente<br/> atualizado, composto<br/> também por proprietários<br/> que possuem imóveis<br/> administrados.</p>
+            </div>
+            <!-- <div class="item">
+                <img src="img/anuncie/itau.png" alt="" class="thumb">
+                <h4>Financiamento<br> Itaú</h4>
+                <p>A <nobr>Coelho da Fonseca</nobr> é<br/> correspondente bancário<br/> nacional e internacional do<br/> Banco Itaú. Isso permite um<br/> leque de facilidades para o<br/> cliente que deseja comprar<br/> seu imóvel financiado.</p>
+            </div> -->
+            <div class="item">
+                <img src="/img/anuncie/documentacao.png" alt="" class="thumb">
+                <h4>Documentação <br>sem custo</h4>
+                <p>No momento da assinatura<br/> do instrumento de venda e<br/> sem qualquer custo para o<br/> contratante, a Coelho da<br/> Fonseca providenciará as<br/> certidões referentes ao<br/> município e comarca da<br/> Capital.</p>
+            </div>
+            <div class="item noMar" style="width: 150px;">
+                <img src="/img/anuncie/seguranca.png" alt="" class="thumb">
+                <h4>Segurança e <br />Privacidade</h4>
+                <p>O agendamento de visitas ao<br/> seu imóvel será feito apenas<br/> pelo corretor associado e<br/> gerente responsáveis pelo<br/> atendimento. Você se sente<br/> muito mais seguro na hora<br/> de abrir as portas.</p>
+            </div>
+            <div class="clear"></div>
+        </div> <!-- /motivos -->
+
+    </div> <!-- /anunciar exclusivamente -->
+
+
+<style>
+.new-contact-bar-flutuante{
+height: 90px;
+background: #fa6d06;
+position: fixed;
+bottom: 0px;
+right: -740px;
+z-index: 11;
+}
+
+.new-contact-bar-flutuante.fixa {
+height: 50px;
+position: fixed;
+bottom: 0;
+z-index: 99999;
+}
+
+.new-contact-bar-inside{
+width: 930px;
+margin: 0 auto;
+height: auto;
+}
+
+.new-contact-bar-inside ul{
+margin: 0;
+padding: 0;
+overflow: hidden;
+
+display: flex;
+justify-content: space-between;
+}
+
+.new-contact-bar-inside ul li{
+height: 90px;
+float: left;
+}
+
+.fixa .new-contact-bar-inside ul li {
+height: 50px;
+}
+
+.new-contact-bar-inside ul li.ico{
+background-repeat: no-repeat;
+background-position: left center;
+text-align: right;
+}
+
+.new-contact-bar-inside ul li.ico-phone{
+background-image: url("/images/site/ico-phone.png");
+width: 190px;
+padding-right: 10px;
+}
+
+.fixa .new-contact-bar-inside ul li.ico-phone{
+width: 195px;
+}
+
+.new-contact-bar-inside ul li.ico-visita{
+background-image: url("/images/site/ico-visita.png");
+width: 110px;
+}
+
+.new-contact-bar-inside ul li.ico-whatsapp{
+background-image: url("/images/site/ico-whatsapp.png");
+width: 140px;
+}
+
+.new-contact-bar-inside ul li.ico-email{
+background-image: url("/images/site/ico-email.png");
+width: 100px;
+}
+
+.new-contact-bar-inside ul li.ico-chat{
+background-image: url("/images/site/ico-chat.png");
+width: 130px;
+}
+
+.new-contact-bar-inside ul li.ico-falar-com-corretor{
+background-image: url("/images/site/ico-falar-com-corretor.png");
+width: 190px;
+background-position: center 8px;
+text-align: center;
+cursor: pointer;
+}
+
+.new-contact-bar-inside ul li.ico-fechar-barra{
+background-image: url("/images/site/ico-fechar-barra.png");
+width: 80px;
+background-position: center center;
+cursor: pointer;
+display: none;
+}
+
+
+
+.new-contact-bar-inside ul li a{
+color: #FFF;
+font-family: 'DIN Next W02 Bold';
+font-size: 14px;
+text-transform: uppercase;
+text-decoration: none;
+padding-top: 32px;
+text-align: left;
+display: inline-block;
+}
+
+.new-contact-bar-inside ul li.ico-visita a{
+padding-top: 28px;
+}
+
+.fixa .new-contact-bar-inside ul li.ico-visita a{
+padding-top: 8px;
+}
+
+.new-contact-bar-inside ul li.ico-email a{
+padding-top: 36px;
+}
+
+.fixa .new-contact-bar-inside ul li.ico-email a{
+padding-top: 0;
+line-height: 55px;
+}
+
+.new-contact-bar-inside ul li.ico-whatsapp a{
+padding-top: 30px;
+}
+
+.fixa .new-contact-bar-inside ul li.ico-whatsapp a {
+padding-top: 12px;
+line-height: 15px;
+padding-left: 50px;
+}
+
+.new-contact-bar-inside ul li.ico-chat a{
+padding-top: 33px;
+width: 100%;
+padding-left: 60px;
+}
+
+.fixa .new-contact-bar-inside ul li.ico-chat a{
+padding-top: 30px;
+}
+
+.new-contact-bar-inside ul li.ico-phone a{
+font-size: 20px;
+}
+
+.fixa .new-contact-bar-inside ul li.ico-phone a {
+line-height: 50px;
+padding-top: 0px;
+}
+
+.new-contact-bar-inside ul li.ico-falar-com-corretor a {
+padding-top: 45px;
+text-align: center;
+}
+
+</style>
 
                                 <h2>Por que seu imóvel deve ter<br /> Contrato de Gestão de Comercialização <nobr>Coelho da Fonseca</nobr>?</h2>
                     
