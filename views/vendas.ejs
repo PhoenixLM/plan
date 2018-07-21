@@ -19,7 +19,7 @@
             http.send();
             return http.status != 404;
         }
-        var url = 'http://localhost:8080/img/' + imovel._id + '/' + 'thumb.jpg'
+        var url = 'img/' + imovel._id + '/' + 'thumb.jpg'
         if(!(UrlExists(url))) {
             url = 'img/default/thumb.jpg'
         }
