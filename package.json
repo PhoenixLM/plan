@@ -30,6 +30,7 @@
     "express-fileupload": "^0.4.0",
     "express-load": "^1.1.16",
     "express-validator": "^5.2.0",
+    "fine-uploader": "^5.16.2",
     "gm": "^1.23.1",
     "http": "0.0.0",
     "mongoose": "^5.1.1",

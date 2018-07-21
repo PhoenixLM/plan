@@ -12,9 +12,8 @@
     var procedencia = 'null';
     function setProc(proc) {
         procedencia = proc;
-        console.log(procedencia);
     }
-    function spawnCard(imovel) {
+    function spawnCard(imovel,divResult) {
         function UrlExists(url) {
             var http = new XMLHttpRequest();
             http.open('HEAD', url, false);
@@ -26,7 +25,7 @@
             url = 'img/default/thumb.jpg'
         }
         var titulo = imovel.titulo;
-        var valor = "R$" + imovel.valor
+        var valor = "R$" + imovel.valor;
         var dormitorios = "&nbsp";
         var suites = "";
         var banheiros = "";
@@ -51,54 +50,74 @@
         if (imovel.condominio !== null && imovel.condominio !== undefined) {
             cond = "COND: R$" + imovel.condominio;
         }
-        var card = "<div class='card' style='margin:5px'>" + 
-                   "<img class='card-img-top' src='" + url + "' alt='Card image cap'>" +
+        var card = "<div class='col-sm-3'>" +
+                   "<div class='card'>" + 
+                   "<img class='card-img-top img-fluid' src='" + url + "' alt='Card image cap'>" +
                    "<div class='card-body'>" +
-                   "<h4 class='card-title'><a>" + titulo + "</a></h4>" +
+                   "<h4 class='card-title'><a href='/alugueis/" + imovel._id + "'>" + titulo + "</a></h4>" +
                    "<h5 class='card-title'><a>" + valor + "</a></h4>" +
                    "<p class='card-text'>" + dormitorios + suites + banheiros + vagas + "</p>" +
                    "</div>";
-        $('#searchResults').append(card);
+        $(divResult).append(card);
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip(); 
-            
         });
     }
     function search() {
+        $('#pesquisa h1').css('display','block');
         var tipo = $('#select_tipo').val();
         var bairro = $('#select_bairro').val();
-        var preco = $('#number_preco').val();
-        if(preco === '') preco = "null"
-        console.log('Pesquisa recebida: ' + tipo + ' ' + bairro + ' ' + preco);
+        var valorMin = $('#select_valor_min').val();
+        var valorMax = $('#select_valor_max').val();
+        if(valorMin === '') valorMin = 0;
+        if(valorMax === '') valorMax = 0;
         $('#searchResults').empty();
-        $.getJSON('/search/alugueis/' + tipo + '&' + bairro + '&' + preco, function(jq) {
+        $.getJSON('/search/alugueis/' + procedencia + '&' + tipo + '&' + bairro + '&' + valorMin + '&' + valorMax, function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
-                spawnCard(jq[i]);
+                spawnCard(jq[i],'#searchResults');
             }
         });
     }
-
-    function searchDestaques() {
+    function searchAll() {
+        $('#pesquisa h1').css('display','block');
         $('#searchResults').empty();
+        $.getJSON('/search/alugueis/all', function(jq) {
+            for(var i = 0; i < jq.length; i++) {
+                spawnCard(jq[i],'#searchResults');
+            }
+        });
+    }
+    function searchDestaques() {
+        $('#destaquesResults').empty();
         $.getJSON('/search/alugueis/destaques', function(jq) {
             for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
-                spawnCard(jq[i]);
+                spawnCard(jq[i],'#destaquesResults');
             }
         });
     }
-
     function searchOportunidades() {
-        $('#searchResults').empty();
+        $('#oportunidadesResults').empty();
         $.getJSON('/search/alugueis/oportunidades', function(jq) {
-            for(var i = 0; i < jq.length; i++) {
-                console.log(jq[i]);
-                spawnCard(jq[i]);
+            if (jq.length == 0) {
+                $('#oportunidades').css('display','none');
+            } else {
+                $('#oportunidadesResults').removeAttr('display');
+                for(var i = 0; i < jq.length; i++) {
+                    spawnCard(jq[i],'#oportunidadesResults');
+                }
             }
         });
+    }
+    function searchBox(objButton) {
+        if($('.submenu').css('display','none')){
+            $('.submenu').css('display','contents');
+            $('#searchBox').html(objButton.innerText);
+            $('#menu button').css('color','#000000');
+            $(objButton).css('color','#87ceea');
+        }
     }
     $(document).ready(function() {
+        $('#pesquisa h1').css('display','none');
         $('[data-toggle="tooltip"]').tooltip();
         searchDestaques();
         searchOportunidades();
@@ -106,31 +125,10 @@
             $(".radioGroup").removeClass("active");
             $(this).addClass("active");
             procedencia = event.target.id;
-            search();
-            
         });
     });
 </script>
 <style>
-    body {
-        background-color:#dcdcdc;
-    }
-    .fundologo {
-        display: block;
-        background: linear-gradient(to top, transparent, #fbfdfe, transparent);
-        margin-top: 15px;
-        float:left;
-    }
-    #header, #menu {
-        background-color: #dcdcdc;
-    }
-    #header .row {
-        margin: 20px 0;
-    }
-    #header #menu-top {
-        margin: 10px 0;
-        font-size: 20px;
-    }
     #header .title-alugueis h2 {
         width: 100%;
         text-align: center;
@@ -149,8 +147,7 @@
         font-size: 20px;
         text-align: center;
         padding: 5px 30px;
-    }
-   
+    }   
     #menu button {
         background-color: #87ceea;
         float:right;    
@@ -159,7 +156,6 @@
     .submenu {
         width: 100%;
         margin: 0;
-        display: none;
     }
     .submenu .form-control {
         margin-top: 20px;
@@ -176,12 +172,11 @@
         <!-- CONTAINER FLUID -->
         <div class="container-fluid">
 
-
             <!--HEADER-->
             <div id="header" class="row">
                 <div class="col-1">
                     <div id="logotopo" align="left">
-                            <a href="/"> <img class="fundologo" src="images/plano.png"></a>
+                            <a href="/"><img class="fundologo" src="images/plano.png"></a>
                     </div>
                 </div>
                 <div class="col-11">
@@ -206,12 +201,15 @@
             </div>
             <!--END HEADER-->
 
-
-            <div class="row" id="menu" style="border:none">
-          
-                <a href="/alugueisr" class="btn" style="position:absolute;width:15%;background:linear-gradient(to bottom, transparent , #ffa621 ,transparent);color:#000!important;"><b>Imóveis</b><br/><b>Residenciais</b></a>
-     
-                    <div class="col-2" style="margin-left:20%;margin-top:1%">
+            <div class="row" id="menu">
+                <div class="row submenu vertical-align">
+                    <div class="col-2">
+                        <a href="/alugueisr" class="btn" style="color: #000!important; width: 100%; background:linear-gradient(to bottom, transparent , #ffa621 ,transparent);">
+                            <b>Imóveis</b><br/>
+                            <b>Residenciais</b>
+                        </a>
+                    </div>
+                    <div class="col-2">
                         <select name="tipo" class="form-control" id="select_tipo" width="30px">
                             <option value="null" selected>Tipo de Imóvel</option>
                             <option value="apartamento">Apartamento</option>
@@ -233,7 +231,7 @@
                             <option value="outros">Outros</option>
                         </select>
                     </div>
-                    <div class="col-2" style="margin-top:1%">
+                    <div class="col-2">
                         <select name="bairro" class="form-control" id="select_bairro">
                             <option value="null" selected>Bairro</option>
                             <option value="aguas claras">Aguas Claras</option>
@@ -266,36 +264,60 @@
                             <option value="zona industrial">Zona Industrial</option>
                         </select>
                     </div>
-                    <div class="col-2" style="margin-top:1%"> 
-                        <input type="number" class="form-control" id="number_preco" placeholder="Valor">
-                        
+                    <div class="col-1">
+                        <select name="valorMin" class="form-control" id="select_valor_min">
+                            <option value="null" selected>Valor Mín.</option>
+                            <option value="200">R$ 200.000</option>
+                            <option value="400">R$ 400.000</option>
+                            <option value="750">R$ 750.000</option>
+                            <option value="1000">R$ 1.000.000</option>
+                            <option value="2000">R$ 2.000.000</option>
+                            <option value="5000">R$ 5.000.000</option>
+                        </select>
                     </div>
                     <div class="col-1">
-                        <button type="button" class="" id="btn_pesquisar" onclick="search();" style="height: 40px;width:140px;">Buscar</button><br/><br/><br/>
+                        <select name="valorMax" class="form-control" id="select_valor_max">
+                            <option value="null" selected>Valor Max.</option>
+                            <option value="200">R$ 200.000</option>
+                            <option value="400">R$ 400.000</option>
+                            <option value="750">R$ 750.000</option>
+                            <option value="1000">R$ 1.000.000</option>
+                            <option value="2000">R$ 2.000.000</option>
+                            <option value="5000">R$ 5.000.000</option>
+                        </select>
                     </div>
-                    <br/>
-                    
-                </div>
-                <div class="row justify-content-center" style="margin-left:8%">
-                    <div class="span-gray">
-                        Buscador integrado com Google Maps
+                    <div class="col-1">
+                        <button type="button" id="btn_pesquisar" onclick="searchAll();">Todos</button>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" id="btn_pesquisar" onclick="search();">Buscar</button>
                     </div>
                 </div>
-                
+
+                <div class="col-12" style="margin-left:4%">
+                    <div class="row justify-content-center">
+                        <div class="span-gray">
+                            Buscador integrado com Google maps
+                        </div>
+                    </div>
+                </div>
             </div>
             
-
-            
-        <!--BARRA BRANCA-->
-        <div class="barra" style="background:white;height: 30px;"> </div>
-        <!--END BARRA BRANCA-->
-            
-
-            <div class="row" id="conteudo" style="border:none">
-                <div class="col-12">
-                    <h1 align="center">Destaques de alugueis</h1>
+            <div class="row" id="conteudo">
+                <div class="col-12" id="destaques">
+                    <h1 align="center">Destaques de Alugueis</h1>
+                    <div class="row" id="destaquesResults"></div>
                 </div>
-                <div id="searchResults" class="d-flex flex-wrap justify-content-center" style="padding:5px"></div>
+                
+                <div class="col-12" id="oportunidades">
+                    <h1 align="center">Oportunidades</h1>
+                    <div class="row" id="oportunidadesResults"></div>
+                </div>
+                
+                <div class="col-12" id="pesquisa">
+                    <h1 align="center">Resultados da Pesquisa</h1>
+                    <div class="row" id="searchResults"></div>
+                </div>
             </div>
 
         </div>

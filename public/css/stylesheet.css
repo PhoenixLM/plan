@@ -33,6 +33,7 @@ body, html {
 }
 #header, #menu, #conteudo {
     background-color: #dcdcdc;
+    border: none;
 }
 #header .row {
     margin: 20px 0;
@@ -75,7 +76,6 @@ body, html {
 .submenu {
     width: 100%;
     margin: 0;
-    display: none;
 }
 .submenu .form-control {
     margin-top: 20px;

@@ -19,7 +19,7 @@
             http.send();
             return http.status != 404;
         }
-        var url = 'localhost:3001/img/' + imovel._id + '/' + 'thumb.jpg'
+        var url = 'http://localhost:8080/img/' + imovel._id + '/' + 'thumb.jpg'
         if(!(UrlExists(url))) {
             url = 'img/default/thumb.jpg'
         }
@@ -63,6 +63,7 @@
         });
     }
     function search() {
+        $('#pesquisa h1').css('display','block');
         var tipo = $('#select_tipo').val();
         var bairro = $('#select_bairro').val();
         var valorMin = $('#select_valor_min').val();
@@ -77,6 +78,7 @@
         });
     }
     function searchAll() {
+        $('#pesquisa h1').css('display','block');
         $('#searchResults').empty();
         $.getJSON('/search/vendas/all', function(jq) {
             for(var i = 0; i < jq.length; i++) {
@@ -96,7 +98,7 @@
         $('#oportunidadesResults').empty();
         $.getJSON('/search/vendas/oportunidades', function(jq) {
             if (jq.length == 0) {
-                $('#oportunidadesResults').css('display','none');
+                $('#oportunidades').css('display','none');
             } else {
                 $('#oportunidadesResults').removeAttr('display');
                 for(var i = 0; i < jq.length; i++) {
@@ -114,6 +116,8 @@
         }
     }
     $(document).ready(function() {
+        $('#pesquisa h1').css('display','none');
+        $('.submenu').css('display','none');
         $('[data-toggle="tooltip"]').tooltip();
         searchDestaques();
         searchOportunidades();
@@ -130,7 +134,6 @@
     <div id="content-wraper">
         <!-- CONTAINER FLUID -->
         <div class="container-fluid">
-
 
             <!--HEADER-->
             <div id="header" class="row">
@@ -282,27 +285,20 @@
            
 
             <div class="row" id="conteudo">
-                <div class="col-12">
+                <div class="col-12" id="destaques">
                     <h1 align="center">Destaques de Vendas</h1>
-                </div>
-                <div class="col-12">
                     <div class="row" id="destaquesResults"></div>
                 </div>
                 
-                <div class="col-12">
+                <div class="col-12" id="oportunidades">
                     <h1 align="center">Oportunidades</h1>
-                </div>
-                <div class="col-12">
                     <div class="row" id="oportunidadesResults"></div>
                 </div>
                 
-                <div class="col-12">
+                <div class="col-12" id="pesquisa">
                     <h1 align="center">Resultados da Pesquisa</h1>
-                </div>
-                <div class="col-12">
                     <div class="row" id="searchResults"></div>
                 </div>
-                
             </div>
 
         </div>
