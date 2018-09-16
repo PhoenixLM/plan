@@ -4,10 +4,18 @@
         "port": "3000"
     },
 
-    "Mongo": {
+    /*"Mongo": {
         "host": "tatooine.mongodb.umbler.com",
         "port": "49548",
         "db"  : "db-plano",
+        "user": "user-plano",
+        "pswd": "senha-plano"
+    },*/
+
+    "Mongo": {
+        "host": "localhost",
+        "port": "27017",
+        "db": "db-plano",
         "user": "user-plano",
         "pswd": "senha-plano"
     },
