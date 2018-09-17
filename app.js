@@ -3,7 +3,7 @@ const http   = require('http').Server(app)
 const config = require('config')
 
 const _HOST = config.get('Server.host')
-const _PORT = config.get('Server.port')
+const _PORT = process.env.PORT || config.get('Server.port')
 
 const server = http.listen(_PORT, _HOST, (err) => {
     if(err) console.log(err)
