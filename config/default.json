@@ -5,8 +5,8 @@
     },
 
     "Mongo": {
-        "host": "tatooine.mongodb.umbler.com",
-        "port": "44644",
+        "host": "localhost",
+        "port": "27017",
         "db"  : "db-plano",
         "user": "user-plano",
         "pswd": "senha-plano"

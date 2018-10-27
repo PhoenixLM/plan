@@ -5,6 +5,7 @@ const Boleto    = require('../models/boleto')
 const moveTo    = require('../helpers/moveToTmp')
 const moveFrom  = require('../helpers/moveImgFromTmp')
 const moveBFrom = require('../helpers/moveBoletoFromTmp')
+var util = require("util");
 
 module.exports = (app) => {
     app.get('/admin/painel', (req, res, next) => {
