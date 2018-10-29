@@ -9,4 +9,13 @@ module.exports = (app) => {
             res.render('infoVenda', {imovel : imovel})
         })
     })
+
+    app.get('/alugueis/:id', (req, res, next) => {
+        let id = req.params.id
+        Imovel.findById(id, (err, imovel) => {
+            if(err) return next(err)
+            if(!imovel) return next()
+            res.render('infoAluguel', {imovel : imovel})
+        })
+    })
 }

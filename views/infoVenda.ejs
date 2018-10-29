@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <% include ./includes/header.ejs %>
     <link rel="stylesheet" href="/css/stylesheet.css">
-    <title>Comprar</title>
+    <title>Descrição do Imóvel</title>
 </head>
 <script>
     var procedencia = 'null';
@@ -50,7 +50,7 @@
         if (imovel.condominio !== null && imovel.condominio !== undefined) {
             cond = "COND: R$" + imovel.condominio;
         }
-        var card = "<div class='card' style='margin:5px'>" + 
+        var card = "<div class='card' style='margin-top:5px;'>" + 
                    "<img class='card-img-top' src='" + url + "' alt='Card image cap'>" +
                    "<div class='card-body'>" +
                    "<h4 class='card-title'><a href='/vendas/" + imovel._id + "'>" + titulo + "</a></h4>" +
@@ -194,14 +194,10 @@
                             <a class="nav-link" href="#">Seja nosso corretor associado</a>
                         </nav>
                     </div>
-                    <div class="row justify-content-center">
-                        <div class="col-9 title-vendas">
-                            <h2><span class="title">Vendas</span></h2>
-                        </div>
-                    </div>
+
                     <div class="row justify-content-center">
                         <div class="span-gray">
-                            Faça aqui sua opção de compra
+                           Descrição do Imóvel selecionado
                         </div>
                     </div>
                 </div>
@@ -209,95 +205,7 @@
             <!--END HEADER-->
 
 
-            <div class="row" id="menu">
-                <div class="col-1"></div>
-                <div class="col-2">
-                    <button type="button" id="construcao" onclick="searchBox(this);">Em Construção</button>
-                </div>
-                <div class="col-2">
-                    <button type="button" id="novo" onclick="searchBox(this);">Novos/Prontos (1ª revenda)</button>
-                </div>
-                <div class="col-2">
-                    <button type="button" id="revenda" onclick="searchBox(this);">Prontos/Revenda</button>
-                </div>
-                <div class="col-2">
-                    <button type="button" id="oportunidades" class="" onclick="searchBox(this);">Oportunidades Únicas</button>
-                </div>
-                <div class="col-2">
-                    <button type="button" id="outros" onclick="searchBox(this);">Outros imóveis</button>
-                </div>
-                <div class="col-1"></div>
-                
-                <div class="row submenu vertical-align">
-                    <div class="col-1"></div>
-                    <div class="col-2">
-                        <button type="button" id="searchBox"></button>
-                    </div>
-                    <div class="col-2">
-                        <select name="tipo" class="form-control" id="select_tipo" width="30px">
-                            <option value="null" selected>Tipo de Imóvel</option>
-                            <option value="apartamento">Apartamento</option>
-                            <option value="casa">Casa</option>
-                            <option value="casa em condominio">Casa em Condomínio</option>
-                            <option value="chacara">Chácara</option>
-                            <option value="cobertura">Cobertura</option>
-                            <option value="empreendimento">Empreendimento</option>
-                            <option value="fazenda">Fazenda</option>
-                            <option value="flat">Flat</option>
-                            <option value="galpao">Galpão</option>
-                            <option value="garagem">Garagem</option>
-                            <option value="kitinete">Kitinete</option>
-                            <option value="loja">Loja</option>
-                            <option value="predio comercial">Prédio Comercial</option>
-                            <option value="sala comercial">Sala Comercial</option>
-                            <option value="salas conjuntos">Salas/Conjuntos</option>
-                            <option value="terreno">Terreno</option>
-                            <option value="outros">Outros</option>
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <select name="bairro" class="form-control" id="select_bairro">
-                            <option value="null" selected>Bairro</option>
-                            <option value="aguas claras">Aguas Claras</option>
-                            <option value="asa norte">Asa Norte</option>
-                            <option value="asa sul">Asa Sul</option>
-                            <option value="brazlandia">Brazlândia</option>
-                            <option value="ceilandia">Ceilândia</option>
-                            <option value="centro">Centro</option>
-                            <option value="cruzeiro">Cruzeiro</option>
-                            <option value="cruzeiro novo">Cruzeiro Novo</option>
-                            <option value="lago norte">Lago Norte</option>
-                            <option value="lago sul">Lago Sul</option>
-                            <option value="ponta negra">Ponta Negra</option>
-                            <option value="samambaia">Samambaia</option>
-                            <option value="samambaia norte">Samambaia Norte</option>
-                            <option value="apartamento">Apartamento</option>
-                            <option value="santa maria">Santa Maria</option>
-                            <option value="shin">Setor de Habitações Individuais Norte</option>
-                            <option value="apartamento">Apartamento</option>
-                            <option value="smpw">Setor de Mansões Park Way</option>
-                            <option value="setor fumal">Setor Fumal</option>
-                            <option value="shvp">Setor Habitacional Vincente Pires</option>
-                            <option value="noroeste">Setor Noroeste</option>
-                            <option value="sudoeste">Setor Sudoeste</option>
-                            <option value="sig">SIG</option>
-                            <option value="sobradinho">Sobradinho</option>
-                            <option value="taguatinga">Taguatinga</option>
-                            <option value="vicente pires">Vicente Pires</option>
-                            <option value="vila planalto">Vila Planalto</option>
-                            <option value="zona industrial">Zona Industrial</option>
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <input type="number" class="form-control" id="number_preco" placeholder="Valor">
-                    </div>
-                    <div class="col-1">
-                        <button type="button" class="" id="btn_pesquisar" onclick="search();">Buscar</button>
-                    </div>
-                </div>
-            </div>
-
-            
+         
             <!--BARRA BRANCA-->
             <div class="Barra"></div>
             <!--END BARRA BRANCA-->

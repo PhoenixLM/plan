@@ -2,6 +2,11 @@ const Admin = require('../models/admin')
 const Cliente = require('../models/cliente')
 
 module.exports = (app) => {
+    app.get('/areaExclusiva', (req, res, next) => {
+        res.render('areaExclusiva', {error : false})
+    })
+
+
     app.get('/login', (req, res, next) => {
         res.render('login', {error : false})
     })
